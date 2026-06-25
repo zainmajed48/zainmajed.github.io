@@ -567,6 +567,19 @@
         /* Contact section yellow override */
         .contact-section .nb-divider-inner { border-top: 2px solid rgba(26,26,46,0.2); }
     </style>
+    <style>
+      /* كود إجباري لإخفاء اللودر وتشغيل السكرول */
+      #loader, #preloader, .preloader, .loader, [class*="loader"] { 
+        display: none !important; 
+        opacity: 0 !important;
+        visibility: hidden !important;
+        z-index: -100 !important;
+      }
+      body, html { 
+        overflow-y: auto !important; 
+        height: auto !important; 
+      }
+    </style>
 </head>
 
 <body class="bg-nb-cream text-nb-ink dark:bg-nb-ink dark:text-nb-cream antialiased">
