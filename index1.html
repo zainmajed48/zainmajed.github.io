@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="زين الدين ماجد - تسويق تقني، صناعة فيديو إعلاني، هندسة تحكم وأنظمة، وأتمتة بالذكاء الاصطناعي.">
+    <meta property="og:title" content="زين الدين ماجد | خبير تسويق تقني وصانع وسائط">
+    <meta property="og:description" content="أعمال وخبرات زين الدين ماجد في التسويق التقني، الفيديو الإعلاني، والهندسة والتحكم.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/og-cover.jpg">
+    <meta property="og:locale" content="ar_AR">
+    <link rel="icon" href="favicon.ico">
+    <title>زين الدين ماجد | خبير تسويق تقني وصانع وسائط</title>
+
+    <!-- Lenis smooth scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'nb-yellow':   '#FFE566',
+                        'nb-peach':    '#FFB4A2',
+                        'nb-mint':     '#B5EAD7',
+                        'nb-lavender': '#C7B8EA',
+                        'nb-ink':      '#1A1A2E',
+                        'nb-ink2':     '#16213E',
+                        'nb-cream':    '#FFFBF0',
+                        'nb-card':     '#F5F0E8',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ═══════════════════════════════════════
+           DESIGN TOKENS
+        ═══════════════════════════════════════ */
+        :root {
+            --nb-shadow-sm:  3px 3px 0 #1A1A2E;
+            --nb-shadow-md:  5px 5px 0 #1A1A2E;
+            --nb-shadow-lg:  8px 8px 0 #1A1A2E;
+            --nb-shadow-xl: 12px 12px 0 #1A1A2E;
+            --ink: #1A1A2E;
+            --yellow: #FFE566;
+            --cream: #FFFBF0;
+
+            /* Motion tokens */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+            --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --dur-fast: 280ms;
+            --dur-med: 500ms;
+            --dur-slow: 800ms;
+            --dur-xslow: 1200ms;
+        }
+        .dark {
+            --nb-shadow-sm:  3px 3px 0 #FFE566;
+            --nb-shadow-md:  5px 5px 0 #FFE566;
+            --nb-shadow-lg:  8px 8px 0 #FFE566;
+            --nb-shadow-xl: 12px 12px 0 #FFE566;
+        }
+
+        /* ═══════════════════════════════════════
+           BASE
+        ═══════════════════════════════════════ */
+        *, *::before, *::after { box-sizing: border-box; word-wrap: break-word; }
+        html { scroll-behavior: auto; } /* Lenis handles smooth */
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            overflow-x: hidden;
+            cursor: none; /* custom cursor on desktop */
+        }
+        @media(max-width: 768px) { body { cursor: auto; } }
+
+        h1,h2,h3,h4,h5,h6,p,span { overflow-wrap: break-word; }
+        img { max-width: 100%; }
+        h2 { line-height: 1.2 !important; }
+        @media(max-width:640px){ h1{font-size:2.8rem!important;} h2{font-size:2.2rem!important;} }
+
+        /* ═══════════════════════════════════════
+           PAGE LOADER
+        ═══════════════════════════════════════ */
+        #loader {
+            position: fixed; inset: 0; z-index: 9999;
+            background: #1A1A2E;
+            display: flex; align-items: center; justify-content: center;
+            flex-direction: column; gap: 20px;
+        }
+        #loader-logo {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-weight: 900; font-size: 3rem; color: #FFE566;
+            opacity: 0; transform: translateY(20px);
+        }
+        #loader-bar-wrap {
+            width: 160px; height: 3px;
+            background: rgba(255,229,102,0.2);
+            border-radius: 2px; overflow: hidden;
+            opacity: 0;
+        }
+        #loader-bar {
+            height: 100%; width: 0%; background: #FFE566;
+            border-radius: 2px;
+            transition: width 0.8s var(--ease-out-expo);
+        }
+        #loader.hide {
+            clip-path: inset(0 0 100% 0);
+            transition: clip-path 0.9s var(--ease-in-out-quart);
+        }
+        /* Fallback: hide loader even if JS fails (e.g. no internet) */
+        .loader-force-hide {
+            display: none !important;
+        }
+
+        /* ═══════════════════════════════════════
+           CUSTOM CURSOR (desktop only)
+        ═══════════════════════════════════════ */
+        #cursor {
+            position: fixed; pointer-events: none; z-index: 9998;
+            width: 12px; height: 12px;
+            background: #FFE566;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.25s var(--ease-out-expo),
+                        height 0.25s var(--ease-out-expo),
+                        background 0.25s ease,
+                        opacity 0.3s ease;
+            mix-blend-mode: difference;
+        }
+        #cursor-ring {
+            position: fixed; pointer-events: none; z-index: 9997;
+            width: 40px; height: 40px;
+            border: 2px solid rgba(255,229,102,0.5);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s var(--ease-out-expo),
+                        height 0.4s var(--ease-out-expo),
+                        border-color 0.3s ease,
+                        opacity 0.4s ease;
+        }
+        #cursor-label {
+            position: fixed; pointer-events: none; z-index: 9998;
+            font-size: 11px; font-weight: 900;
+            color: #1A1A2E; background: #FFE566;
+            padding: 4px 10px; border-radius: 20px;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.3s var(--ease-elastic), opacity 0.2s ease;
+            white-space: nowrap;
+            border: 2px solid #1A1A2E;
+        }
+        .cursor-hover #cursor { width: 0; height: 0; opacity: 0; }
+        .cursor-hover #cursor-ring { width: 60px; height: 60px; border-color: rgba(255,229,102,0.8); }
+        .cursor-hover #cursor-label { transform: translate(-50%, -50%) scale(1); }
+
+        @media(max-width: 768px) {
+            #cursor, #cursor-ring, #cursor-label { display: none; }
+        }
+
+        /* ═══════════════════════════════════════
+           SCROLL PROGRESS BAR
+        ═══════════════════════════════════════ */
+        #scroll-progress {
+            position: fixed; top: 0; right: 0; left: 0; height: 3px;
+            z-index: 9996; background: transparent;
+        }
+        #scroll-progress-bar {
+            height: 100%; width: 0%; background: #FFE566;
+            box-shadow: 0 0 8px rgba(255,229,102,0.6);
+            transition: width 0.1s linear;
+        }
+
+        /* ═══════════════════════════════════════
+           BACK TO TOP
+        ═══════════════════════════════════════ */
+        #back-to-top {
+            position: fixed; bottom: 32px; left: 32px; z-index: 500;
+            width: 48px; height: 48px;
+            background: #FFE566; color: #1A1A2E;
+            border: 3px solid #1A1A2E;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: none;
+            opacity: 0; transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s var(--ease-out-expo),
+                        box-shadow 0.2s ease;
+            box-shadow: var(--nb-shadow-sm);
+        }
+        #back-to-top:hover { box-shadow: var(--nb-shadow-md); transform: translateY(17px); }
+        #back-to-top.visible { opacity: 1; transform: translateY(0); }
+        @media(max-width:768px){ #back-to-top { left:16px; bottom:16px; cursor:pointer; } }
+
+        /* ═══════════════════════════════════════
+           NEOBRUTALISM CORE COMPONENTS
+        ═══════════════════════════════════════ */
+        .nb-card {
+            border: 3px solid #1A1A2E;
+            box-shadow: var(--nb-shadow-md);
+            border-radius: 14px;
+            transition: box-shadow 0.25s var(--ease-out-expo),
+                        transform 0.25s var(--ease-out-expo);
+        }
+        .nb-card:hover { box-shadow: var(--nb-shadow-xl); transform: translate(-3px, -3px); }
+
+        .nb-badge {
+            border: 2px solid #1A1A2E; box-shadow: 2px 2px 0 #1A1A2E; font-weight: 900;
+        }
+        .dark .nb-badge { border-color: #FFE566; box-shadow: 2px 2px 0 #FFE566; }
+
+        /* Button with ripple */
+        .nb-btn {
+            position: relative; overflow: hidden;
+            border: 3px solid #1A1A2E;
+            box-shadow: var(--nb-shadow-md);
+            font-weight: 900; cursor: none;
+            transition: box-shadow 0.15s var(--ease-out-expo),
+                        transform 0.15s var(--ease-out-expo);
+        }
+        .nb-btn:hover { box-shadow: var(--nb-shadow-lg); transform: translate(-2px,-2px); }
+        .nb-btn:active { box-shadow: 1px 1px 0 #1A1A2E; transform: translate(2px,2px); }
+        .nb-btn .ripple {
+            position: absolute; border-radius: 50%;
+            background: rgba(26,26,46,0.15); pointer-events: none;
+            transform: scale(0); animation: ripple-anim 0.55s linear;
+        }
+        @keyframes ripple-anim {
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        .nb-btn-ghost {
+            border: 3px solid #1A1A2E; box-shadow: var(--nb-shadow-sm); font-weight: 800; cursor: none;
+            transition: box-shadow 0.15s var(--ease-out-expo), transform 0.15s var(--ease-out-expo);
+        }
+        .nb-btn-ghost:hover { box-shadow: var(--nb-shadow-md); transform: translate(-2px,-2px); }
+        @media(max-width:768px){ .nb-btn, .nb-btn-ghost { cursor: pointer; } }
+
+        /* ═══════════════════════════════════════
+           SKILL TAGS
+        ═══════════════════════════════════════ */
+        .skill-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 5px 14px; border-radius: 100px; font-size: 0.8rem; font-weight: 800;
+            border: 2px solid #1A1A2E; box-shadow: 2px 2px 0 #1A1A2E;
+            background: #B5EAD7; color: #1A1A2E;
+            transition: transform 0.2s var(--ease-elastic), box-shadow 0.15s ease;
+            cursor: default;
+        }
+        .dark .skill-tag { background:#1A1A2E; color:#FFE566; border-color:#FFE566; box-shadow:2px 2px 0 #FFE566; }
+        .skill-tag:hover { transform: translate(-1px,-2px) scale(1.04); box-shadow: 3px 4px 0 #1A1A2E; }
+        .dark .skill-tag:hover { box-shadow: 3px 4px 0 #FFE566; }
+
+        /* ═══════════════════════════════════════
+           NAV
+        ═══════════════════════════════════════ */
+        .nb-nav { border-bottom: 3px solid #1A1A2E; }
+        .dark .nb-nav { border-bottom-color: #FFE566; }
+
+        /* Nav link active indicator */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute; bottom: -4px; right: 0; left: 0;
+            height: 3px; background: #FFE566;
+            border-radius: 2px; transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s var(--ease-out-expo);
+        }
+        .nav-link.active::after, .nav-link:hover::after { transform: scaleX(1); }
+
+        /* Mobile menu */
+        #mobile-menu { max-height:0; overflow:hidden; transition: max-height 0.4s var(--ease-out-expo), opacity 0.3s ease; opacity:0; }
+        #mobile-menu.open { max-height:500px; opacity:1; }
+
+        /* ═══════════════════════════════════════
+           HERO FLOATING SHAPES
+        ═══════════════════════════════════════ */
+        .hero-shape {
+            position: absolute; pointer-events: none;
+            will-change: transform;
+        }
+        .hero-shape-1 {
+            top: 10%; right: 5%;
+            width: 144px; height: 144px;
+            border-radius: 50%;
+            background: #FFE566; opacity: 0.4;
+            border: 3px solid #1A1A2E;
+            box-shadow: 6px 6px 0 #1A1A2E;
+        }
+        .dark .hero-shape-1 { opacity: 0.25; }
+        .hero-shape-2 {
+            bottom: 15%; left: 5%;
+            width: 96px; height: 96px;
+            border-radius: 50%;
+            background: #B5EAD7; opacity: 0.5;
+            border: 3px solid #1A1A2E;
+            box-shadow: 5px 5px 0 #1A1A2E;
+        }
+        .dark .hero-shape-2 { opacity: 0.2; }
+        .hero-shape-3 {
+            top: 55%; left: 28%;
+            width: 64px; height: 64px;
+            border-radius: 50%;
+            background: #FFB4A2; opacity: 0.35;
+            border: 2px solid #1A1A2E;
+        }
+        .dark .hero-shape-3 { opacity: 0.15; }
+        .hero-shape-4 {
+            top: 20%; left: 15%;
+            width: 24px; height: 24px;
+            border-radius: 4px;
+            background: #C7B8EA; opacity: 0.5;
+            border: 2px solid #1A1A2E;
+            transform: rotate(20deg);
+        }
+        .dark .hero-shape-4 { opacity: 0.2; }
+
+        /* Diagonal stripe bg */
+        .nb-stripe {
+            background-image: repeating-linear-gradient(
+                -45deg, transparent, transparent 10px,
+                rgba(26,26,46,0.03) 10px, rgba(26,26,46,0.03) 11px
+            );
+        }
+        .dark .nb-stripe {
+            background-image: repeating-linear-gradient(
+                -45deg, transparent, transparent 10px,
+                rgba(255,229,102,0.04) 10px, rgba(255,229,102,0.04) 11px
+            );
+        }
+
+        /* Yellow accent underline */
+        .nb-ul {
+            text-decoration: underline;
+            text-decoration-color: #FFE566;
+            text-underline-offset: 6px;
+            text-decoration-thickness: 4px;
+        }
+
+        /* ═══════════════════════════════════════
+           TYPEWRITER
+        ═══════════════════════════════════════ */
+        .typewriter-cursor {
+            display: inline-block; width: 3px; height: 1em;
+            background: #FFE566;
+            margin-right: 2px; vertical-align: middle;
+            animation: blink 0.8s step-end infinite;
+        }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+        #typewriter-text {
+            display: block; white-space: normal; line-height: 1.3;
+            word-break: break-word; min-height: 2.5em; padding-top: 0.15em;
+        }
+        @media(max-width:640px){ #typewriter-text{ font-size:0.9em; } }
+
+        /* ═══════════════════════════════════════
+           PROFILE IMAGE — offset shadow reveal
+        ═══════════════════════════════════════ */
+        .profile-shadow-layer {
+            position: absolute; inset: 0; border-radius: 50%;
+            background: #FFE566;
+            border: 3px solid #1A1A2E;
+            transform: translate(10px, 10px) scale(0.95);
+            transition: transform 0.35s var(--ease-out-expo);
+        }
+        .profile-wrap:hover .profile-shadow-layer {
+            transform: translate(14px, 14px) scale(1);
+        }
+        .profile-img-container {
+            position: relative; border-radius: 50%; overflow: hidden;
+            background: #F5F0E8;
+            border: 3px solid #1A1A2E;
+        }
+        .dark .profile-img-container { background: #16213E; }
+
+        /* ═══════════════════════════════════════
+           PORTFOLIO CARDS — 3D tilt
+        ═══════════════════════════════════════ */
+        .portfolio-card {
+            border: 3px solid #1A1A2E;
+            box-shadow: var(--nb-shadow-md);
+            border-radius: 16px;
+            transition: box-shadow 0.25s var(--ease-out-expo);
+            transform-style: preserve-3d;
+            will-change: transform, box-shadow;
+            cursor: none;
+            display: block;
+        }
+        @media(max-width:768px){ .portfolio-card { cursor: pointer; } }
+        .portfolio-card:hover { box-shadow: var(--nb-shadow-xl); }
+
+        /* Color stripe top reveal */
+        .card-stripe {
+            position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            border-radius: 16px 16px 0 0;
+            transform-origin: right;
+            transition: transform 0.4s var(--ease-out-expo), height 0.3s var(--ease-out-expo);
+        }
+        .portfolio-card:hover .card-stripe { height: 8px; }
+
+        /* Card icon bounce on hover */
+        .card-icon {
+            border: 2px solid #1A1A2E;
+            box-shadow: 3px 3px 0 #1A1A2E;
+            transition: transform 0.3s var(--ease-elastic), box-shadow 0.2s ease;
+        }
+        .portfolio-card:hover .card-icon {
+            transform: scale(1.15) rotate(-5deg);
+            box-shadow: 5px 5px 0 #1A1A2E;
+        }
+
+        /* ═══════════════════════════════════════
+           ABOUT STAT CARDS — animated number
+        ═══════════════════════════════════════ */
+        .nb-stat {
+            border: 3px solid #1A1A2E;
+            box-shadow: var(--nb-shadow-sm);
+            border-radius: 14px;
+            transition: box-shadow 0.2s var(--ease-out-expo), transform 0.2s var(--ease-out-expo);
+        }
+        .nb-stat:hover { box-shadow: var(--nb-shadow-md); transform: translate(-2px,-2px); }
+
+        /* ═══════════════════════════════════════
+           TIMELINE
+        ═══════════════════════════════════════ */
+        .timeline-node .node-circle { transition: all 0.35s var(--ease-elastic); }
+        .timeline-node:hover .node-circle { transform: scale(1.4); }
+        .timeline-node > span { line-height:1.4; }
+        @media(max-width:768px){
+            .timeline-node .node-circle{margin-bottom:10px;}
+            .timeline-node span{position:static!important;display:block;margin-top:8px;}
+        }
+        /* Timeline track fill */
+        #timeline-track-fill {
+            position: absolute; top: 50%; right: 0;
+            height: 3px; width: 0%;
+            background: #FFE566;
+            border-radius: 2px;
+            transform: translateY(-50%);
+            transition: width 0.8s var(--ease-out-expo);
+        }
+
+        /* Timeline node states (replaces hardcoded JS styles) */
+        .timeline-node .node-circle {
+            width: 1.25rem; height: 1.25rem; border-radius: 9999px;
+            border: 3px solid #1A1A2E;
+            background: rgba(26,26,46,0.15);
+            z-index: 10;
+            transition: all 0.35s var(--ease-elastic);
+        }
+        .dark .timeline-node .node-circle {
+            border-color: #FFE566;
+            background: rgba(255,229,102,0.15);
+        }
+        .timeline-node.active .node-circle {
+            background: #FFE566;
+            box-shadow: 3px 3px 0 #1A1A2E;
+            transform: scale(1.25);
+        }
+        .dark .timeline-node.active .node-circle {
+            box-shadow: 3px 3px 0 #FFE566;
+        }
+        .timeline-node .year-label {
+            position: absolute; -bottom: 8;
+            font-weight: 900; font-size: 0.75rem;
+            color: rgba(26,26,46,0.45);
+            transition: color 0.3s ease;
+        }
+        .dark .timeline-node .year-label {
+            color: rgba(255,251,240,0.35);
+        }
+        .timeline-node.active .year-label {
+            color: #1A1A2E;
+        }
+        .dark .timeline-node.active .year-label {
+            color: #FFE566;
+        }
+        /* Timeline detail box dark-mode fix */
+        .timeline-detail-box {
+            border: 2.5px solid #1A1A2E;
+            box-shadow: 5px 5px 0 #1A1A2E;
+        }
+        .dark .timeline-detail-box {
+            border-color: #FFE566;
+            box-shadow: 5px 5px 0 #FFE566;
+        }
+        /* Timeline dashed track dark mode */
+        .timeline-track {
+            border-top: 2.5px dashed rgba(26,26,46,0.2);
+        }
+        .dark .timeline-track {
+            border-top-color: rgba(255,229,102,0.2);
+        }
+
+        /* ═══════════════════════════════════════
+           SOCIAL BUTTONS
+        ═══════════════════════════════════════ */
+        .social-btn { width:46px;height:46px;display:flex;align-items:center;justify-content:center;position:relative;border-radius:10px;cursor:none;z-index:1; }
+        .social-btn .svgContainer {
+            width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+            border-radius:10px; background:transparent;
+            border:2px solid #1A1A2E; box-shadow:2px 2px 0 #1A1A2E; z-index:2;
+            transition: transform 0.25s var(--ease-elastic), box-shadow 0.2s ease;
+        }
+        .dark .social-btn .svgContainer { border-color:#FFE566; box-shadow:2px 2px 0 #FFE566; }
+        .social-btn .BG { position:absolute;width:100%;height:100%;z-index:-1;border-radius:10px;pointer-events:none; }
+        .social-btn:hover .svgContainer { box-shadow:5px 5px 0 #1A1A2E; transform:translate(-2px,-2px) scale(1.05); }
+        .dark .social-btn:hover .svgContainer { box-shadow:5px 5px 0 #FFE566; }
+        @media(max-width:768px){ .social-btn { cursor:pointer; } }
+
+        /* ═══════════════════════════════════════
+           SECTION DIVIDERS
+        ═══════════════════════════════════════ */
+        .nb-divider { border-top: 3px solid #1A1A2E; }
+        .dark .nb-divider { border-top-color: #FFE566; }
+
+        /* ═══════════════════════════════════════
+           GSAP ANIMATION INITIAL STATES
+           (hidden until JS runs)
+        ═══════════════════════════════════════ */
+        .gsap-fade { opacity: 0; }
+        .gsap-slide-up { opacity: 0; transform: translateY(40px); }
+        .gsap-slide-left { opacity: 0; transform: translateX(40px); }
+        .gsap-scale { opacity: 0; transform: scale(0.92); }
+        .gsap-clip { clip-path: inset(0 0 100% 0); }
+
+        /* Word-split spans */
+        .word { display: inline-block; overflow: hidden; }
+        .word-inner { display: inline-block; transform: translateY(110%); }
+
+        /* ═══════════════════════════════════════
+           THEME TOGGLE MORPH
+        ═══════════════════════════════════════ */
+        .theme-btn {
+            position: relative; overflow: hidden;
+            transition: background 0.4s ease, transform 0.2s var(--ease-elastic);
+        }
+        .theme-btn:hover { transform: scale(1.1) rotate(12deg); }
+        .theme-btn svg {
+            transition: transform 0.4s var(--ease-out-expo), opacity 0.3s ease;
+        }
+
+        /* ═══════════════════════════════════════
+           PREFERS REDUCED MOTION — override
+        ═══════════════════════════════════════ */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            #loader { display: none !important; }
+        }
+
+        /* Contact section yellow override */
+        .contact-section .nb-divider-inner { border-top: 2px solid rgba(26,26,46,0.2); }
+    </style>
+</head>
+
+<body class="bg-nb-cream text-nb-ink dark:bg-nb-ink dark:text-nb-cream antialiased">
+
+    <!-- ═══════════════════════════════════════
+         PAGE LOADER
+    ═══════════════════════════════════════ -->
+    <div id="loader">
+        <div id="loader-logo">زين.</div>
+        <div id="loader-bar-wrap">
+            <div id="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         CUSTOM CURSOR
+    ═══════════════════════════════════════ -->
+    <div id="cursor"></div>
+    <div id="cursor-ring"></div>
+    <div id="cursor-label"></div>
+
+    <!-- ═══════════════════════════════════════
+         SCROLL PROGRESS
+    ═══════════════════════════════════════ -->
+    <div id="scroll-progress"><div id="scroll-progress-bar"></div></div>
+
+    <!-- ═══════════════════════════════════════
+         BACK TO TOP
+    ═══════════════════════════════════════ -->
+    <button id="back-to-top" aria-label="العودة للأعلى">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/>
+        </svg>
+    </button>
+
+    <!-- ═══════════════════════════════════════
+         NAVIGATION
+    ═══════════════════════════════════════ -->
+    <nav id="main-nav" class="nb-nav bg-nb-cream/98 dark:bg-nb-ink2/95 backdrop-blur-sm sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="#" class="font-black text-2xl tracking-tight text-nb-ink dark:text-nb-yellow gsap-fade">
+                    <span class="nb-ul">زين.</span>
+                </a>
+                <div class="hidden md:flex gap-8 items-center gsap-fade">
+                    <a href="#" data-section="hero" class="nav-link text-nb-ink dark:text-nb-cream font-bold text-sm">الرئيسية</a>
+                    <a href="#about" data-section="about" class="nav-link text-nb-ink dark:text-nb-cream font-bold text-sm">نبذة عني</a>
+                    <a href="#portfolio" data-section="portfolio" class="nav-link text-nb-ink dark:text-nb-cream font-bold text-sm">أعمالي</a>
+                    <a href="#contact" data-section="contact" class="nav-link text-nb-ink dark:text-nb-cream font-bold text-sm">تواصل معي</a>
+                    <a href="en/index.html" class="px-3 py-1 bg-nb-mint text-nb-ink rounded-md font-black text-sm nb-btn-ghost">English</a>
+                    <button id="theme-toggle" class="theme-btn p-2 rounded-lg bg-nb-yellow dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow" style="border:2px solid #1A1A2E;box-shadow:2px 2px 0 #1A1A2E" aria-label="Toggle theme">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-nb-yellow dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow" style="border:2px solid #1A1A2E;box-shadow:2px 2px 0 #1A1A2E" aria-label="القائمة">
+                    <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <svg id="close-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden bg-nb-cream dark:bg-nb-ink2" style="border-top:3px solid #1A1A2E">
+            <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-2">
+                <a href="#" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition mobile-nav-link">الرئيسية</a>
+                <a href="#about" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition mobile-nav-link">نبذة عني</a>
+                <a href="#portfolio" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition mobile-nav-link">أعمالي</a>
+                <a href="#contact" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition mobile-nav-link">تواصل معي</a>
+                <div class="flex items-center gap-3 pt-2" style="border-top:2px solid rgba(26,26,46,0.15)">
+                    <a href="en/index.html" class="px-3 py-1 bg-nb-mint text-nb-ink rounded-md font-black text-sm nb-badge">English</a>
+                    <button id="mobile-theme-toggle" class="p-2 rounded-lg bg-nb-yellow dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow nb-badge">
+                        <svg class="theme-dark-icon w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg class="theme-light-icon hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════
+         HERO SECTION
+    ═══════════════════════════════════════ -->
+    <section id="hero" class="relative pt-24 pb-32 overflow-hidden nb-stripe">
+        <!-- Floating decorative shapes -->
+        <div class="hero-shape hero-shape-1" id="shape1" aria-hidden="true"></div>
+        <div class="hero-shape hero-shape-2" id="shape2" aria-hidden="true"></div>
+        <div class="hero-shape hero-shape-3" id="shape3" aria-hidden="true"></div>
+        <div class="hero-shape hero-shape-4" id="shape4" aria-hidden="true"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+
+                <div class="md:w-1/2 text-center md:text-right">
+                    <!-- Status badge -->
+                    <div class="inline-flex items-center gap-2 mb-6 gsap-fade" id="hero-badge">
+                        <span class="nb-badge px-3 py-1.5 rounded-full text-xs bg-nb-mint dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow">
+                            <span class="relative flex h-2 w-2 inline-block ml-1" style="vertical-align:middle">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                            </span>
+                            متاح للتسويق التقني والتعاقد المؤسسي
+                        </span>
+                    </div>
+
+                    <!-- Headline — word split -->
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.15] mb-6 text-nb-ink dark:text-nb-cream tracking-tight" id="hero-headline">
+                        أنا<br>
+                        <span class="flex flex-col items-center md:items-start h-[180px] sm:h-[150px] lg:h-[170px] mt-1">
+                            <span id="typewriter-text" class="text-nb-ink dark:text-nb-yellow nb-ul"></span>
+                            <span class="typewriter-cursor"></span>
+                        </span>
+                    </h1>
+
+                    <p class="text-base text-nb-ink/65 dark:text-nb-cream/65 mb-8 leading-relaxed max-w-md mx-auto md:mx-0 gsap-slide-up" id="hero-sub">
+                        أترجم التعقيد البرمجي والهندسي إلى حملات مرئية وإعلانات بيعية تحقق أعلى عائد على الاستثمار (ROI) للشركات والمؤسسات التقنية.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4 gsap-slide-up" id="hero-ctas">
+                        <a href="#portfolio" class="nb-btn bg-nb-yellow text-nb-ink px-8 py-4 rounded-xl text-center font-black" data-cursor-label="استكشف">
+                            شاهد أعمالي
+                        </a>
+                        <a href="#contact" class="nb-btn-ghost bg-nb-cream dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow px-8 py-4 rounded-xl text-center font-bold" data-cursor-label="تواصل">
+                            تواصل معي
+                        </a>
+                    </div>
+
+                    <div class="mt-8 flex flex-wrap justify-center md:justify-start gap-2" id="hero-tags">
+                        <span class="skill-tag gsap-fade">⚙️ هندسة أنظمة وتحكم</span>
+                        <span class="skill-tag gsap-fade">🎬 مونتاج إعلاني بيعي</span>
+                        <span class="skill-tag gsap-fade">📊 إدارة محتوى وميديا باينج (B2B)</span>
+                        <span class="skill-tag gsap-fade">🤖 أتمتة الذكاء الاصطناعي</span>
+                    </div>
+                </div>
+
+                <!-- Profile image -->
+                <div class="md:w-1/2 flex justify-center md:justify-end gsap-scale" id="hero-profile">
+                    <div class="profile-wrap relative group">
+                        <div class="profile-shadow-layer"></div>
+                        <div class="profile-img-container w-64 h-64 sm:w-80 sm:h-80 relative z-10">
+                            <img src="assets/images/profile.jpg" alt="Zain Eldeen Majed"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                onerror="this.style.display='none';this.parentElement.innerHTML+='<div class=\'w-full h-full flex items-center justify-center text-6xl\'>🧑‍💻</div>'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         PORTFOLIO SECTION
+    ═══════════════════════════════════════ -->
+    <section id="portfolio" class="py-24 bg-nb-card dark:bg-nb-ink2 nb-divider">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section header -->
+            <div class="text-center mb-16">
+                <span class="inline-block nb-badge px-4 py-1.5 text-xs rounded-full bg-nb-peach dark:bg-nb-ink text-nb-ink dark:text-nb-yellow mb-4 gsap-fade" data-scroll-reveal>ماذا أقدم؟</span>
+                <h2 class="text-3xl md:text-5xl font-black text-nb-ink dark:text-nb-cream mb-4 gsap-slide-up" data-scroll-reveal>أعمالي وتخصصاتي</h2>
+                <p class="text-base text-nb-ink/60 dark:text-nb-cream/60 gsap-fade" data-scroll-reveal>اختر المجال الذي تود استكشافه</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="portfolio-cards">
+                <!-- Card 1 -->
+                <a href="marketing.html" class="portfolio-card group relative bg-nb-cream dark:bg-nb-ink p-8 overflow-hidden gsap-slide-up" data-cursor-label="استكشف" data-tilt>
+                    <div class="card-stripe bg-nb-peach"></div>
+                    <div class="card-icon w-14 h-14 bg-nb-peach rounded-2xl flex items-center justify-center mb-6 text-2xl">📱</div>
+                    <h3 class="text-xl font-black text-nb-ink dark:text-nb-cream mb-3" style="min-height:4.5rem;line-height:1.5">التسويق التقني وإدارة الإعلانات</h3>
+                    <p class="text-sm text-nb-ink/65 dark:text-nb-cream/65 leading-relaxed mb-5">كتابة المحتوى الإعلاني المتخصص، تخطيط استراتيجيات المحتوى، والميديا باينج (Media Buying) عالي العائد للشركات البرمجية والصناعية الكبرى.</p>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-black text-nb-ink dark:text-nb-yellow">
+                        عرض المشاريع
+                        <svg class="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform rotate-180 duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7-7 7M3 12h18"></path></svg>
+                    </span>
+                </a>
+                <!-- Card 2 -->
+                <a href="video.html" class="portfolio-card group relative bg-nb-cream dark:bg-nb-ink p-8 overflow-hidden gsap-slide-up" data-cursor-label="استكشف" data-tilt>
+                    <div class="card-stripe bg-nb-yellow"></div>
+                    <div class="card-icon w-14 h-14 bg-nb-yellow rounded-2xl flex items-center justify-center mb-6 text-2xl">🎬</div>
+                    <h3 class="text-xl font-black text-nb-ink dark:text-nb-cream mb-3" style="min-height:4.5rem;line-height:1.5">صناعة ومونتاج الفيديو الإعلاني</h3>
+                    <p class="text-sm text-nb-ink/65 dark:text-nb-cream/65 leading-relaxed mb-5">تحرير الفيديوهات الإعلانية الموجهة للبيع المباشر، وصناعة الخطافات البصرية (Hooks) التي تضمن تثبيت انتباه المشاهد وزيادة التحويلات.</p>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-black text-nb-ink dark:text-nb-yellow">
+                        عرض المشاريع
+                        <svg class="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform rotate-180 duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7-7 7M3 12h18"></path></svg>
+                    </span>
+                </a>
+                <!-- Card 3 -->
+                <a href="engineering.html" class="portfolio-card group relative bg-nb-cream dark:bg-nb-ink p-8 overflow-hidden gsap-slide-up" data-cursor-label="استكشف" data-tilt>
+                    <div class="card-stripe bg-nb-mint"></div>
+                    <div class="card-icon w-14 h-14 bg-nb-mint rounded-2xl flex items-center justify-center mb-6 text-2xl">⚙️</div>
+                    <h3 class="text-xl font-black text-nb-ink dark:text-nb-cream mb-3" style="min-height:4.5rem;line-height:1.5">الهندسة والتحكم الصناعي</h3>
+                    <p class="text-sm text-nb-ink/65 dark:text-nb-cream/65 leading-relaxed mb-5">دراسة وتطبيق أنظمة التحكم الذكية، برمجة متحكمات الأردوينو، والـ PLC، والـ Classic Control ببنية هندسية صارمة.</p>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-black text-nb-ink dark:text-nb-yellow">
+                        عرض المشاريع
+                        <svg class="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform rotate-180 duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7-7 7M3 12h18"></path></svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         ABOUT SECTION
+    ═══════════════════════════════════════ -->
+    <section id="about" class="py-24 bg-nb-cream dark:bg-nb-ink nb-divider">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                <!-- Text -->
+                <div>
+                    <span class="inline-block nb-badge px-4 py-1.5 text-xs rounded-full bg-nb-lavender dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow mb-4 gsap-fade" data-scroll-reveal>نبذة عني</span>
+                    <h2 class="text-3xl md:text-5xl font-black text-nb-ink dark:text-nb-cream mb-6 leading-tight gsap-slide-up" data-scroll-reveal>
+                        منطق هندسي صارم،<br>
+                        وعوائد تجارية <span class="nb-ul">ملموسة.</span>
+                    </h2>
+                    <p class="text-base text-nb-ink/70 dark:text-nb-cream/70 leading-relaxed gsap-slide-up" data-scroll-reveal>
+                        طالب في كلية الهندسة الإلكترونية بجامعة المنوفية (قسم التحكم والآلات الصناعية)، وخبير استراتيجي في التسويق والوسائط التقنية. أدمج عقلية "التفكير النظمي" الهندسي التحليلي مع مهارات صناعة المحتوى الإعلاني الموجه للمبيعات. لا أؤمن بالمحتوى العشوائي، بل أبني خطوط إنتاج متكاملة للمحتوى والتسويق الرقمي تضمن لشركات البرمجيات والمؤسسات الصناعية الكبرى راحة البال، السيطرة على السوق، والنتائج المالية المستقرة.
+                    </p>
+                </div>
+
+                <!-- Stat cards -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="nb-stat bg-nb-yellow dark:bg-nb-ink2 p-6 text-center cursor-default gsap-scale" data-scroll-reveal>
+                        <span class="block text-3xl font-black text-nb-ink dark:text-nb-yellow mb-1">مستقل متفوق</span>
+                        <span class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 uppercase tracking-wider">على منصة Upwork الدولية</span>
+                    </div>
+                    <div class="nb-stat bg-nb-mint dark:bg-nb-ink2 p-6 text-center cursor-default gsap-scale" data-scroll-reveal>
+                        <span class="block text-3xl font-black text-nb-ink dark:text-nb-yellow mb-1">تخصص B2B</span>
+                        <span class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 uppercase tracking-wider">البرمجيات والصناعات الثقيلة</span>
+                    </div>
+                    <div class="nb-stat bg-nb-peach dark:bg-nb-ink2 p-6 text-center cursor-default gsap-scale" data-scroll-reveal>
+                        <span class="count-up block text-3xl font-black text-nb-ink dark:text-nb-yellow mb-1" data-target="3" data-prefix="+">0</span>
+                        <span class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 uppercase tracking-wider">عملاء دوليون ناجحون</span>
+                    </div>
+                    <div class="nb-stat bg-nb-lavender dark:bg-nb-ink2 p-6 text-center cursor-default gsap-scale col-span-2" data-scroll-reveal>
+                        <span class="count-up block text-4xl font-black text-nb-ink dark:text-nb-yellow mb-1" data-target="2027" data-prefix="">2022</span>
+                        <span class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 uppercase tracking-wider">سنة التخرج · كلية الهندسة الإلكترونية بجامعة المنوفية</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline card -->
+            <div class="nb-card bg-nb-card dark:bg-nb-ink2 p-8 md:p-12 gsap-slide-up">
+                <span class="inline-block nb-badge px-4 py-1.5 text-xs rounded-full bg-nb-yellow text-nb-ink mb-2">المسار</span>
+                <h3 class="text-2xl font-black text-nb-ink dark:text-nb-cream mb-14">رحلتي الحقيقية</h3>
+
+                <div class="relative w-full mb-14 pt-12">
+                    <!-- Dashed track -->
+                    <div class="timeline-track absolute top-1/2 right-0 w-full -translate-y-1/2"></div>
+                    <!-- Animated fill track -->
+                    <div id="timeline-track-fill"></div>
+
+                    <div class="relative flex justify-between items-center w-full max-w-4xl mx-auto px-2">
+                        <div class="timeline-node group relative cursor-pointer flex flex-col items-center" data-index="0" tabindex="0" role="button">
+                            <div class="absolute -top-10 right-1/2 translate-x-1/2 whitespace-nowrap text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none bg-nb-ink text-nb-yellow" style="border:2px solid #FFE566;box-shadow:3px 3px 0 #FFE566">🎓 التأسيس الهندسي</div>
+                            <div class="node-circle"></div>
+                            <span class="year-label -bottom-8">2022</span>
+                        </div>
+                        <div class="timeline-node group relative cursor-pointer flex flex-col items-center" data-index="1" tabindex="0" role="button">
+                            <div class="absolute -top-10 right-1/2 translate-x-1/2 whitespace-nowrap text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none bg-nb-ink text-nb-yellow" style="border:2px solid #FFE566;box-shadow:3px 3px 0 #FFE566">🤝 انطلاق العمل الحر</div>
+                            <div class="node-circle"></div>
+                            <span class="year-label -bottom-8">2023</span>
+                        </div>
+                        <div class="timeline-node group relative cursor-pointer flex flex-col items-center" data-index="2" tabindex="0" role="button">
+                            <div class="absolute -top-10 right-1/2 translate-x-1/2 whitespace-nowrap text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none bg-nb-ink text-nb-yellow" style="border:2px solid #FFE566;box-shadow:3px 3px 0 #FFE566">🎬 الأتمتة والتحكم</div>
+                            <div class="node-circle"></div>
+                            <span class="year-label -bottom-8">2024</span>
+                        </div>
+                        <div class="timeline-node group relative cursor-pointer flex flex-col items-center" data-index="3" tabindex="0" role="button">
+                            <div class="absolute -top-10 right-1/2 translate-x-1/2 whitespace-nowrap text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none bg-nb-ink text-nb-yellow" style="border:2px solid #FFE566;box-shadow:3px 3px 0 #FFE566">📊 التسويق الرقمي</div>
+                            <div class="node-circle"></div>
+                            <span class="year-label -bottom-8">2025</span>
+                        </div>
+                        <div class="timeline-node group relative cursor-pointer flex flex-col items-center" data-index="4" tabindex="0" role="button">
+                            <div class="absolute -top-10 right-1/2 translate-x-1/2 whitespace-nowrap text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none bg-nb-ink text-nb-yellow" style="border:2px solid #FFE566;box-shadow:3px 3px 0 #FFE566">🚀 القيادة التنفيذية</div>
+                            <div class="node-circle"></div>
+                            <span class="year-label -bottom-8">اليوم</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="timeline-details-box" class="timeline-detail-box bg-nb-cream dark:bg-nb-ink p-6 rounded-2xl transition-all duration-300 opacity-0 translate-y-2 mt-6">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
+                        <h4 id="timeline-title" class="text-xl font-black text-nb-ink dark:text-nb-cream"></h4>
+                        <span id="timeline-date" class="px-3 py-1 bg-nb-yellow text-nb-ink rounded-full text-xs font-black nb-badge"></span>
+                    </div>
+                    <div id="timeline-org" class="text-xs font-bold text-nb-ink/50 dark:text-nb-cream/40 mb-3 uppercase tracking-wider"></div>
+                    <p id="timeline-text" class="text-nb-ink/70 dark:text-nb-cream/70 leading-relaxed text-sm"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         CONTACT SECTION
+    ═══════════════════════════════════════ -->
+    <section id="contact" class="contact-section py-24 bg-nb-yellow dark:bg-nb-ink2 nb-divider">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="inline-block nb-badge px-4 py-1.5 text-xs rounded-full bg-nb-cream text-nb-ink mb-4 gsap-fade">لنعمل معاً</span>
+            <h2 class="text-3xl md:text-5xl font-black text-nb-ink dark:text-nb-cream mb-6 gsap-slide-up">مستعد لبناء شيء استثنائي؟</h2>
+            <div class="flex flex-wrap justify-center gap-4 mb-14 gsap-slide-up">
+                <a href="https://www.upwork.com/freelancers/~01d503ee7d17d3e651" target="_blank" class="nb-btn flex items-center gap-2.5 px-7 py-3 bg-[#14a800] text-white rounded-xl" data-cursor-label="Upwork">Upwork</a>
+                <a href="https://mostaql.com/u/Zain_majed48" target="_blank" class="nb-btn flex items-center gap-2.5 px-7 py-3 bg-[#2386c8] text-white rounded-xl" data-cursor-label="مستقل">مستقل</a>
+                <a href="https://www.linkedin.com/in/zain-eldeen-majed" target="_blank" class="nb-btn flex items-center gap-2.5 px-7 py-3 bg-[#0a66c2] text-white rounded-xl" data-cursor-label="LinkedIn">LinkedIn</a>
+            </div>
+            <div class="pt-10 gsap-fade" data-scroll-reveal style="border-top:2px solid rgba(26,26,46,0.2)">
+                <p class="text-xs font-black text-nb-ink/50 uppercase tracking-widest mb-6">Also on</p>
+                <div class="flex justify-center gap-5">
+                    <a href="https://youtube.com/@Zain-majed" target="_blank" class="social-btn group" title="YouTube" data-cursor-label="YouTube">
+                        <div class="BG bg-nb-cream dark:bg-nb-ink2"></div>
+                        <div class="svgContainer text-nb-ink dark:text-nb-cream group-hover:text-[#FF0000] transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        </div>
+                    </a>
+                    <a href="https://instagram.com/zain.eldeen.majed" target="_blank" class="social-btn group" title="Instagram" data-cursor-label="Instagram">
+                        <div class="BG bg-nb-cream dark:bg-nb-ink2"></div>
+                        <div class="svgContainer text-nb-ink dark:text-nb-cream group-hover:text-[#E1306C] transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.7-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </div>
+                    </a>
+                    <a href="https://tiktok.com/@zaineldeen_majed" target="_blank" class="social-btn group" title="TikTok" data-cursor-label="TikTok">
+                        <div class="BG bg-nb-cream dark:bg-nb-ink2"></div>
+                        <div class="svgContainer text-nb-ink dark:text-nb-cream transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                        </div>
+                    </a>
+                    <a href="https://facebook.com/zain.majed.79" target="_blank" class="social-btn group" title="Facebook" data-cursor-label="Facebook">
+                        <div class="BG bg-nb-cream dark:bg-nb-ink2"></div>
+                        <div class="svgContainer text-nb-ink dark:text-nb-cream group-hover:text-[#1877F2] transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         JAVASCRIPT — MOTION SYSTEM
+    ═══════════════════════════════════════ */
+    <script>
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       0. THEME — runs first to avoid flash
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    const applyTheme = (isDark) => {
+        isDark ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+    };
+    applyTheme(localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches));
+
+    const syncThemeIcons = () => {
+        const dark = document.documentElement.classList.contains('dark');
+        document.getElementById('theme-toggle-dark-icon')?.classList.toggle('hidden', dark);
+        document.getElementById('theme-toggle-light-icon')?.classList.toggle('hidden', !dark);
+        document.querySelector('.theme-dark-icon')?.classList.toggle('hidden', dark);
+        document.querySelector('.theme-light-icon')?.classList.toggle('hidden', !dark);
+    };
+    syncThemeIcons();
+
+    document.getElementById('theme-toggle')?.addEventListener('click', () => {
+        applyTheme(!document.documentElement.classList.contains('dark'));
+        syncThemeIcons();
+    });
+    document.getElementById('mobile-theme-toggle')?.addEventListener('click', () => {
+        applyTheme(!document.documentElement.classList.contains('dark'));
+        syncThemeIcons();
+    });
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       1. MOBILE MENU
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+        const menu = document.getElementById('mobile-menu');
+        const hamburger = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+        menu.classList.toggle('open');
+        hamburger?.classList.toggle('hidden');
+        closeIcon?.classList.toggle('hidden');
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.remove('open');
+            document.getElementById('hamburger-icon')?.classList.remove('hidden');
+            document.getElementById('close-icon')?.classList.add('hidden');
+        });
+    });
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       2. TYPEWRITER
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    const roles = ['خبير تسويق تقني (Tech Media).','محرر فيديو إعلاني بيعي.','مهندس أنظمة وتحكم آلي.','مؤسس أنظمة تشغيل تجارية.'];
+    let roleIndex = 0, charIndex = 0, deleting = false;
+    const typeEl = document.getElementById('typewriter-text');
+    function type() {
+        const current = roles[roleIndex];
+        if (!deleting) {
+            typeEl.textContent = current.substring(0, charIndex + 1); charIndex++;
+            if (charIndex === current.length) { setTimeout(() => { deleting = true; type(); }, 2000); return; }
+        } else {
+            typeEl.textContent = current.substring(0, charIndex - 1); charIndex--;
+            if (charIndex === 0) { deleting = false; roleIndex = (roleIndex + 1) % roles.length; }
+        }
+        setTimeout(type, deleting ? 55 : 85);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       3. TIMELINE DATA
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    const timelineData = [
+        { title:"الالتحاق بكلية الهندسة الإلكترونية", org:"جامعة المنوفية · قسم التحكم والآلات الصناعية", date:"أواخر 2022", text:"بناء التفكير المنطقي والتحليلي الصارم عبر دراسة الدوائر الإلكترونية المعقدة وأنظمة التحكم، وتحويل حل المشكلات إلى رد فعل تلقائي." },
+        { title:"إطلاق العمل الحر وتأسيس خط إمداد تجاري", org:"منصة Upwork العالمية · أعمال حرة مستقلة", date:"أوائل 2023", text:"بدء العمل الاحترافي كمحرر فيديو على منصة Upwork الدولية. بالتوازي، تأسيس خط إمداد مستقل لجمع الكراتين وإعادة بيعها للمصانع الكبرى." },
+        { title:"التعمق في الأتمتة والتحكم الصناعي", org:"الدورات الهندسية المتقدمة", date:"2024", text:"دراسة وتطبيق تكنولوجيا الإلكترونيات الدقيقة عبر برمجة متحكمات الأردوينو، وحضور برامج تدريبية متخصصة في الـ PLC والـ Classic Control." },
+        { title:"التسويق التقني والاعتمادات الرقمية الكبرى", org:"منحة رواد مصر الرقمية (DEPI) · مبادرة ITIDA Gigs · مؤسسة The Insider", date:"صيف 2025", text:"التخرج من تراك الماركتنج بمنحة رواد مصر الرقمية، وإتمام 3 وظائف حرة ناجحة لعملاء دوليين، بالتوازي مع العمل 3 أشهر في نشاط The Insider Menofia." },
+        { title:"القيادة التنفيذية وإعلانات الشركات الكبرى", org:"شركة Puresoft · شركة CRT · رئاسة النشاط الطلابي", date:"أوائل 2026 - اليوم", text:"تولي منصب محرر فيديو رئيسي ومستشار تسويق في Puresoft، وإدارة الميديا باينج بالكامل في CRT، بالتوازي مع رئاسة النشاط الطلابي الرسمي بالكلية." }
+    ];
+
+    function updateTimeline(index) {
+        document.querySelectorAll('.timeline-node').forEach((node, idx) => {
+            node.classList.toggle('active', idx === index);
+        });
+        // Animate track fill to active node percentage
+        const pct = (index / 4) * 100;
+        const fill = document.getElementById('timeline-track-fill');
+        if(fill) fill.style.width = pct + '%';
+
+        const box = document.getElementById('timeline-details-box');
+        box.style.opacity = '0'; box.style.transform = 'translateY(12px)';
+        setTimeout(() => {
+            const d = timelineData[index];
+            document.getElementById('timeline-title').textContent = d.title;
+            document.getElementById('timeline-date').textContent = d.date;
+            document.getElementById('timeline-org').textContent = d.org;
+            document.getElementById('timeline-text').textContent = d.text;
+            box.style.opacity = '1'; box.style.transform = 'translateY(0)';
+            box.style.transition = 'opacity 0.35s ease, transform 0.35s cubic-bezier(0.16,1,0.3,1)';
+        }, 180);
+    }
+
+    document.querySelectorAll('.timeline-node').forEach(node => {
+        node.addEventListener('click', () => updateTimeline(parseInt(node.dataset.index)));
+        node.addEventListener('keydown', e => {
+            if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); updateTimeline(parseInt(node.dataset.index)); }
+        });
+    });
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       4. RIPPLE ON BUTTONS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    document.querySelectorAll('.nb-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const rect = this.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            const size = Math.max(rect.width, rect.height);
+            ripple.className = 'ripple';
+            ripple.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px`;
+            this.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       5. SCROLL PROGRESS + BACK TO TOP
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    const progressBar = document.getElementById('scroll-progress-bar');
+    const backToTop = document.getElementById('back-to-top');
+    function updateScrollProgress() {
+        const scrollTop = window.scrollY;
+        const docH = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docH > 0 ? (scrollTop / docH) * 100 : 0;
+        if(progressBar) progressBar.style.width = pct + '%';
+        if(backToTop) {
+            if(scrollTop > 400) backToTop.classList.add('visible');
+            else backToTop.classList.remove('visible');
+        }
+    }
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       6. CUSTOM CURSOR (desktop only)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    if(window.matchMedia('(pointer: fine)').matches) {
+        const cur = document.getElementById('cursor');
+        const ring = document.getElementById('cursor-ring');
+        const label = document.getElementById('cursor-label');
+        let cx = -100, cy = -100, rx = -100, ry = -100;
+        let isHovering = false;
+
+        document.addEventListener('mousemove', e => {
+            cx = e.clientX; cy = e.clientY;
+            cur.style.left = cx + 'px'; cur.style.top = cy + 'px';
+        });
+
+        // Ring follows with lag
+        function lerpRing() {
+            rx += (cx - rx) * 0.12;
+            ry += (cy - ry) * 0.12;
+            ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+            label.style.left = rx + 'px'; label.style.top = ry + 'px';
+            requestAnimationFrame(lerpRing);
+        }
+        lerpRing();
+
+        // Hover: elements with data-cursor-label
+        document.querySelectorAll('[data-cursor-label]').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                document.body.classList.add('cursor-hover');
+                label.textContent = el.dataset.cursorLabel;
+                isHovering = true;
+            });
+            el.addEventListener('mouseleave', () => {
+                document.body.classList.remove('cursor-hover');
+                label.textContent = '';
+                isHovering = false;
+            });
+        });
+
+        document.addEventListener('mouseleave', () => { cur.style.opacity='0'; ring.style.opacity='0'; });
+        document.addEventListener('mouseenter', () => { cur.style.opacity='1'; ring.style.opacity='1'; });
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       7. COUNT-UP NUMBERS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    function countUp(el) {
+        const target = parseInt(el.dataset.target);
+        const prefix = el.dataset.prefix || '';
+        const start = parseInt(el.textContent) || 0;
+        const duration = 1600;
+        const startTime = performance.now();
+        function update(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out quart
+            const eased = 1 - Math.pow(1 - progress, 4);
+            el.textContent = prefix + Math.round(start + (target - start) * eased);
+            if(progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       8. NAV SCROLL SPY
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    function updateNavSpy() {
+        const sections = ['hero','portfolio','about','contact'];
+        const scrollY = window.scrollY + 120;
+        let current = 'hero';
+        sections.forEach(id => {
+            const el = document.getElementById(id);
+            if(el && el.offsetTop <= scrollY) current = id;
+        });
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.toggle('active', link.dataset.section === current);
+        });
+    }
+    window.addEventListener('scroll', updateNavSpy, { passive: true });
+    updateNavSpy();
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       9. GSAP + SCROLLTRIGGER ANIMATIONS
+       (with fallback for offline / CDN failure)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* Safety: force hide loader if GSAP/CDN fails */
+    function showContentFallback() {
+        document.querySelectorAll('.gsap-fade, .gsap-slide-up, .gsap-scale, .gsap-clip').forEach(el => {
+            el.style.opacity = '1'; el.style.transform = 'none'; el.style.clipPath = 'none';
+        });
+        document.querySelectorAll('.skill-tag').forEach(el => el.style.opacity = '1');
+        updateTimeline?.(4);
+        type?.();
+    }
+    const loaderSafetyTimeout = setTimeout(() => {
+        const loader = document.getElementById('loader');
+        if(loader && loader.style.display !== 'none') {
+            loader.classList.add('loader-force-hide');
+            showContentFallback();
+        }
+    }, 3500);
+
+    window.addEventListener('load', () => {
+        try {
+            /* If safety timeout already ran, bail out */
+            const loader = document.getElementById('loader');
+            if(loader && loader.classList.contains('loader-force-hide')) {
+                clearTimeout(loaderSafetyTimeout);
+                return;
+            }
+
+            /* Check reduced motion */
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            /* Guard: if GSAP isn't loaded, skip animations */
+            if(typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+                clearTimeout(loaderSafetyTimeout);
+                document.getElementById('loader')?.classList.add('loader-force-hide');
+                showContentFallback();
+                return;
+            }
+
+            /* ── LENIS SMOOTH SCROLL ── */
+            if(!reducedMotion && typeof Lenis !== 'undefined') {
+                const lenis = new Lenis({
+                    duration: 1.2,
+                    easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    direction: 'vertical',
+                    smooth: true,
+                });
+                gsap.ticker.add(time => lenis.raf(time * 1000));
+                gsap.ticker.lagSmoothing(0);
+                // Sync ScrollTrigger
+                lenis.on('scroll', ScrollTrigger.update);
+            }
+
+            /* ── REGISTER SCROLLTRIGGER ── */
+            gsap.registerPlugin(ScrollTrigger);
+
+            /* ── PAGE LOADER ── */
+            const loaderLogo = document.getElementById('loader-logo');
+            const loaderBarWrap = document.getElementById('loader-bar-wrap');
+            const loaderBar = document.getElementById('loader-bar');
+            const loader = document.getElementById('loader');
+
+            clearTimeout(loaderSafetyTimeout);
+
+            if(!reducedMotion) {
+                gsap.timeline()
+                    .to(loaderLogo, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' })
+                    .to(loaderBarWrap, { opacity: 1, duration: 0.3 }, '-=0.3')
+                    .call(() => { loaderBar.style.width = '100%'; })
+                    .to({}, { duration: 0.9 }) // wait for bar
+                    .call(() => {
+                        // Slide loader out
+                        gsap.to(loader, {
+                            clipPath: 'inset(0 0 100% 0)',
+                            duration: 0.85,
+                            ease: 'power4.inOut',
+                            onComplete: () => {
+                                loader.style.display = 'none';
+                                // Trigger hero entrance
+                                heroEntrance();
+                            }
+                        });
+                    });
+            } else {
+                loader.style.display = 'none';
+                heroEntrance();
+            }
+
+        /* ── HERO ENTRANCE ── */
+        function heroEntrance() {
+            // Start typewriter
+            setTimeout(type, 300);
+
+            if(reducedMotion) {
+                // Show everything immediately
+                document.querySelectorAll('.gsap-fade,.gsap-slide-up,.gsap-scale').forEach(el => {
+                    el.style.opacity = '1'; el.style.transform = 'none';
+                });
+                updateTimeline(4);
+                return;
+            }
+
+            const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+            // Nav
+            tl.to('#main-nav .gsap-fade', { opacity: 1, duration: 0.5, stagger: 0.1 }, 0.1)
+
+            // Badge
+            .to('#hero-badge', { opacity: 1, y: 0, duration: 0.6 }, 0.3)
+
+            // Headline
+            .to('#hero-headline', { opacity: 1, y: 0, duration: 0.7 }, 0.45)
+
+            // Subtitle
+            .to('#hero-sub', { opacity: 1, y: 0, duration: 0.6 }, 0.6)
+
+            // CTAs
+            .to('#hero-ctas', { opacity: 1, y: 0, duration: 0.55 }, 0.72)
+
+            // Skill tags stagger
+            .to('#hero-tags .skill-tag', { opacity: 1, duration: 0.4, stagger: 0.08 }, 0.85)
+
+            // Profile image
+            .to('#hero-profile', { opacity: 1, scale: 1, duration: 0.8, ease: 'back.out(1.4)' }, 0.5)
+
+            // Floating shapes
+            .to('#shape1', { opacity: 0.4, scale: 1, duration: 1, ease: 'back.out(1.2)' }, 0.2)
+            .to('#shape2', { opacity: 0.5, scale: 1, duration: 1, ease: 'back.out(1.2)' }, 0.35)
+            .to('#shape3', { opacity: 0.35, scale: 1, duration: 0.8 }, 0.5)
+            .to('#shape4', { opacity: 0.5, scale: 1, duration: 0.8 }, 0.6)
+
+            .call(() => {
+                updateTimeline(4);
+                startFloatingShapes();
+            });
+        }
+
+        /* ── FLOATING SHAPES ANIMATION ── */
+        function startFloatingShapes() {
+            if(reducedMotion) return;
+            gsap.to('#shape1', { y: -18, rotation: 8, duration: 3.5, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+            gsap.to('#shape2', { y: 14, x: 8, duration: 4.2, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 0.5 });
+            gsap.to('#shape3', { y: -10, x: -6, duration: 3, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 1 });
+            gsap.to('#shape4', { y: 12, rotation: 30, duration: 5, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 0.8 });
+        }
+
+        /* ── MOUSE PARALLAX ON HERO ── */
+        if(!reducedMotion && window.matchMedia('(pointer: fine)').matches) {
+            document.getElementById('hero')?.addEventListener('mousemove', e => {
+                const rect = document.getElementById('hero').getBoundingClientRect();
+                const cx = (e.clientX - rect.left) / rect.width - 0.5;
+                const cy = (e.clientY - rect.top) / rect.height - 0.5;
+                // Parallax only on profile image — shapes have their own floating loops
+                gsap.to('#hero-profile', { x: cx * -8, y: cy * -6, duration: 1.2, ease: 'power2.out' });
+            });
+        }
+
+        /* ── SCROLL REVEAL: Portfolio cards ── */
+        if(!reducedMotion) {
+            gsap.utils.toArray('#portfolio-cards .portfolio-card').forEach((card, i) => {
+                gsap.fromTo(card,
+                    { opacity: 0, y: 50 },
+                    { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: i * 0.12,
+                      scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' }
+                    }
+                );
+            });
+
+            /* Section badges + headings */
+            gsap.utils.toArray('[data-scroll-reveal]').forEach(el => {
+                const isSlide = el.classList.contains('gsap-slide-up');
+                const isFade = el.classList.contains('gsap-fade');
+                const isScale = el.classList.contains('gsap-scale');
+
+                if(isSlide) {
+                    gsap.fromTo(el, { opacity: 0, y: 40 }, {
+                        opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+                        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+                    });
+                } else if(isScale) {
+                    gsap.fromTo(el, { opacity: 0, scale: 0.9 }, {
+                        opacity: 1, scale: 1, duration: 0.65, ease: 'back.out(1.5)',
+                        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+                    });
+                } else {
+                    gsap.fromTo(el, { opacity: 0 }, {
+                        opacity: 1, duration: 0.55, ease: 'power2.out',
+                        scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
+                    });
+                }
+            });
+
+            /* Timeline card reveal */
+            gsap.fromTo('.nb-card',
+                { opacity: 0, y: 50, scale: 0.97 },
+                { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'power3.out',
+                  scrollTrigger: { trigger: '.nb-card', start: 'top 85%', toggleActions: 'play none none none' }
+                }
+            );
+
+            /* Count-up numbers */
+            document.querySelectorAll('.count-up').forEach(el => {
+                ScrollTrigger.create({
+                    trigger: el,
+                    start: 'top 85%',
+                    onEnter: () => countUp(el),
+                    once: true
+                });
+            });
+
+            /* Timeline track — draw on scroll */
+            ScrollTrigger.create({
+                trigger: '#timeline-track-fill',
+                start: 'top 80%',
+                onEnter: () => {
+                    updateTimeline(4); // re-trigger to animate track to 100%
+                }
+            });
+
+            /* Contact section stagger */
+            gsap.fromTo('#contact .gsap-slide-up',
+                { opacity: 0, y: 40 },
+                { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.1,
+                  scrollTrigger: { trigger: '#contact', start: 'top 85%' }
+                }
+            );
+        } else {
+            // Reduced motion: just show everything
+            document.querySelectorAll('[data-scroll-reveal], .portfolio-card, .nb-card').forEach(el => {
+                el.style.opacity = '1'; el.style.transform = 'none';
+            });
+            updateTimeline(4);
+        }
+
+        /* ── 3D CARD TILT ── */
+        if(!reducedMotion && window.matchMedia('(pointer: fine)').matches) {
+            document.querySelectorAll('[data-tilt]').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const cx = (e.clientX - rect.left) / rect.width - 0.5;
+                    const cy = (e.clientY - rect.top) / rect.height - 0.5;
+                    gsap.to(card, {
+                        rotationY: cx * 10,
+                        rotationX: -cy * 10,
+                        transformPerspective: 600,
+                        ease: 'power2.out',
+                        duration: 0.4,
+                        overwrite: 'auto'
+                    });
+                });
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(card, { rotationY: 0, rotationX: 0, duration: 0.6, ease: 'elastic.out(1, 0.6)', overwrite: 'auto' });
+                });
+            });
+        }
+
+        } catch(err) {
+            console.warn('Motion system fallback:', err);
+            clearTimeout(loaderSafetyTimeout);
+            document.getElementById('loader')?.classList.add('loader-force-hide');
+            showContentFallback();
+        }
+
+    }); // end window.load
+    </script>
+</body>
+</html>
