@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="dark">
+<html lang="en" dir="ltr" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="زين الدين ماجد - تسويق تقني، صناعة فيديو إعلاني، هندسة تحكم وأنظمة، وأتمتة بالذكاء الاصطناعي.">
-    <meta property="og:title" content="زين الدين ماجد | خبير تسويق تقني وصانع وسائط">
-    <meta property="og:description" content="أعمال وخبرات زين الدين ماجد في التسويق التقني، الفيديو الإعلاني، والهندسة والتحكم.">
+    <meta name="description" content="Zain Eldeen Majed - Technical Growth Strategist, B2B Marketing Specialist, Video Editor, and Control Systems Engineer.">
+    <meta property="og:title" content="Zain Eldeen Majed | Technical Growth Strategist">
+    <meta property="og:description" content="Engineering precision, technical marketing, media buying, and conversion-focused content systems.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="assets/images/og-cover.jpg">
-    <meta property="og:locale" content="ar_AR">
-    <link rel="icon" href="favicon.ico">
-    <title>زين الدين ماجد | خبير تسويق تقني وصانع وسائط</title>
+    <meta property="og:image" content="../assets/images/og-cover.jpg">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" href="../favicon.ico">
+    <title>Zain Eldeen Majed | Technical Growth Strategist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Space+Grotesk:wght@700;900&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -31,6 +31,10 @@
                         'nb-ink2':     '#16213E',
                         'nb-cream':    '#FFFBF0',
                         'nb-card':     '#F5F0E8',
+                    },
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'Inter', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif'],
                     }
                 }
             }
@@ -43,8 +47,6 @@
             --nb-shadow-md:  5px 5px 0 #1A1A2E;
             --nb-shadow-lg:  8px 8px 0 #1A1A2E;
             --nb-shadow-xl: 12px 12px 0 #1A1A2E;
-            --nb-ink: #1A1A2E;
-            --nb-yellow: #FFE566;
         }
         .dark {
             --nb-shadow-sm:  3px 3px 0 #FFE566;
@@ -53,15 +55,28 @@
             --nb-shadow-xl: 12px 12px 0 #FFE566;
         }
 
-        body { font-family: 'Noto Sans Arabic', sans-serif; overflow-x: hidden; }
+        @media (max-width: 640px) {
+            :root {
+                --nb-shadow-md: 3px 3px 0 #1A1A2E;
+                --nb-shadow-lg: 5px 5px 0 #1A1A2E;
+                --nb-shadow-xl: 7px 7px 0 #1A1A2E;
+            }
+            .dark {
+                --nb-shadow-md: 3px 3px 0 #FFE566;
+                --nb-shadow-lg: 5px 5px 0 #FFE566;
+                --nb-shadow-xl: 7px 7px 0 #FFE566;
+            }
+        }
+
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        h1, h2, h3, h4, .font-display { font-family: 'Space Grotesk', sans-serif; }
         * { word-wrap: break-word; }
-        h1,h2,h3,h4,h5,h6,p,span { overflow-wrap: break-word; }
         img { max-width: 100%; }
 
         /* Typewriter */
         .typewriter-cursor {
-            display: inline-block; width: 3px; height: 1em;
-            background: #FFE566; margin-right: 2px;
+            display: inline-block; width: 4px; height: 1em;
+            background: #FFE566; margin-left: 4px;
             vertical-align: middle; animation: blink 0.8s step-end infinite;
         }
         .dark .typewriter-cursor { background: #FFE566; }
@@ -69,12 +84,12 @@
         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
         #typewriter-text {
-            display: block; white-space: normal; line-height: 1.3;
+            display: block; white-space: normal; line-height: 1.2;
             word-break: break-word; min-height: 2.5em; padding-top: 0.15em;
         }
         @media(max-width:640px){ #typewriter-text{ font-size:0.9em; } }
 
-        /* Neobrutalism: hard offset shadow */
+        /* Neobrutalism Core Components */
         .nb-card {
             border: 3px solid #1A1A2E;
             box-shadow: var(--nb-shadow-md);
@@ -85,6 +100,7 @@
             box-shadow: var(--nb-shadow-xl);
             transform: translate(-3px, -3px);
         }
+        .dark .nb-card { border-color: #FFE566; }
 
         .nb-badge {
             border: 2px solid #1A1A2E;
@@ -97,17 +113,20 @@
             border: 3px solid #1A1A2E;
             box-shadow: var(--nb-shadow-md);
             font-weight: 900;
-            transition: box-shadow 0.12s, transform 0.12s;
+            transition: box-shadow 0.12s ease, transform 0.12s ease;
         }
+        .dark .nb-btn { border-color: #FFE566; }
         .nb-btn:hover { box-shadow: var(--nb-shadow-lg); transform: translate(-2px,-2px); }
         .nb-btn:active { box-shadow: 1px 1px 0 #1A1A2E; transform: translate(2px,2px); }
+        .dark .nb-btn:active { box-shadow: 1px 1px 0 #FFE566; }
 
         .nb-btn-ghost {
             border: 3px solid #1A1A2E;
             box-shadow: var(--nb-shadow-sm);
             font-weight: 800;
-            transition: box-shadow 0.12s, transform 0.12s;
+            transition: box-shadow 0.12s ease, transform 0.12s ease;
         }
+        .dark .nb-btn-ghost { border-color: #FFE566; }
         .nb-btn-ghost:hover { box-shadow: var(--nb-shadow-md); transform: translate(-2px,-2px); }
 
         /* Skill tags */
@@ -118,7 +137,7 @@
             border: 2px solid #1A1A2E;
             box-shadow: 2px 2px 0 #1A1A2E;
             background: #B5EAD7; color: #1A1A2E;
-            transition: transform 0.12s, box-shadow 0.12s;
+            transition: transform 0.12s ease, box-shadow 0.12s ease;
         }
         .dark .skill-tag {
             background: #1A1A2E; color: #FFE566;
@@ -127,17 +146,17 @@
         .skill-tag:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 #1A1A2E; }
         .dark .skill-tag:hover { box-shadow: 3px 3px 0 #FFE566; }
 
-        /* Reveal */
+        /* Reveal Animation */
         .reveal { opacity:0; transform:translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
         .reveal.visible { opacity:1; transform:translateY(0); }
 
         @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-        .fade-up{opacity:0;animation:fadeUp 0.6s ease forwards;}
-        .fade-up-1{animation-delay:0.1s}.fade-up-2{animation-delay:0.25s}
-        .fade-up-3{animation-delay:0.4s}.fade-up-4{animation-delay:0.55s}
+        .fade-up{opacity:0;animation:fadeUp 0.5s ease forwards;}
+        .fade-up-1{animation-delay:0.1s}.fade-up-2{animation-delay:0.2s}
+        .fade-up-3{animation-delay:0.3s}.fade-up-4{animation-delay:0.4s}
 
-        /* Timeline */
-        .timeline-node .node-circle { transition: all 0.3s; }
+        /* Timeline adjustments for LTR */
+        .timeline-node .node-circle { transition: transform 0.3s ease, background 0.3s ease; }
         .timeline-node:hover .node-circle { transform: scale(1.4); }
         .timeline-node > span { line-height:1.4; }
         @media(max-width:768px){
@@ -149,43 +168,38 @@
         .portfolio-card {
             border: 3px solid #1A1A2E;
             box-shadow: var(--nb-shadow-md);
-            transition: box-shadow 0.15s, transform 0.15s;
+            transition: box-shadow 0.15s ease, transform 0.15s ease;
             border-radius: 16px;
         }
-        .portfolio-card:hover {
-            box-shadow: var(--nb-shadow-xl);
-            transform: translate(-4px,-4px);
-        }
+        .dark .portfolio-card { border-color: #FFE566; }
+        .portfolio-card:hover { box-shadow: var(--nb-shadow-xl); transform: translate(-4px,-4px); }
 
         /* Social buttons */
         .social-btn { width:46px;height:46px;display:flex;align-items:center;justify-content:center;position:relative;border-radius:10px;cursor:pointer;z-index:1; }
         .social-btn .svgContainer {
             width:100%;height:100%;display:flex;align-items:center;justify-content:center;
-            border-radius:10px;transition:all 0.15s;
+            border-radius:10px;transition: all 0.15s ease;
             border:2px solid #1A1A2E; box-shadow:2px 2px 0 #1A1A2E; z-index:2; background:transparent;
         }
         .dark .social-btn .svgContainer { border-color:#FFE566; box-shadow:2px 2px 0 #FFE566; }
-        .social-btn .BG { position:absolute;width:100%;height:100%;z-index:-1;border-radius:10px;pointer-events:none;transition:all 0.3s; }
+        .social-btn .BG { position:absolute;width:100%;height:100%;z-index:-1;border-radius:10px;pointer-events:none; }
         .social-btn:hover .svgContainer { box-shadow:4px 4px 0 #1A1A2E; transform:translate(-1px,-1px); }
         .dark .social-btn:hover .svgContainer { box-shadow:4px 4px 0 #FFE566; }
 
         /* Mobile nav */
-        #mobile-menu{max-height:0;overflow:hidden;transition:max-height 0.35s ease,opacity 0.3s ease;opacity:0;}
+        #mobile-menu{max-height:0;overflow:hidden;transition:max-height 0.3s ease,opacity 0.2s ease;opacity:0;}
         #mobile-menu.open{max-height:500px;opacity:1;}
 
-        h2{line-height:1.2!important;}
-        @media(max-width:640px){ h1{font-size:2.8rem!important;} h2{font-size:2.2rem!important;} }
-
-        /* Diagonal stripe bg */
+        /* Background Pattern */
         .nb-stripe {
             background-image: repeating-linear-gradient(
-                -45deg, transparent, transparent 10px,
+                45deg, transparent, transparent 10px,
                 rgba(26,26,46,0.035) 10px, rgba(26,26,46,0.035) 11px
             );
         }
         .dark .nb-stripe {
             background-image: repeating-linear-gradient(
-                -45deg, transparent, transparent 10px,
+                45deg, transparent, transparent 10px,
                 rgba(255,229,102,0.04) 10px, rgba(255,229,102,0.04) 11px
             );
         }
@@ -204,8 +218,9 @@
             border: 3px solid #1A1A2E;
             box-shadow: var(--nb-shadow-sm);
             border-radius: 14px;
-            transition: box-shadow 0.15s, transform 0.15s;
+            transition: box-shadow 0.15s ease, transform 0.15s ease;
         }
+        .dark .nb-stat { border-color: #FFE566; }
         .nb-stat:hover { box-shadow: var(--nb-shadow-md); transform:translate(-2px,-2px); }
 
         /* Section dividers */
@@ -220,38 +235,37 @@
 
 <body class="bg-nb-cream text-nb-ink dark:bg-nb-ink dark:text-nb-cream antialiased transition-colors duration-300">
 
-    <!-- ── NAV ── -->
-    <nav class="nb-nav bg-nb-cream/98 dark:bg-nb-ink2/95 backdrop-blur-sm sticky top-0 z-50 transition-colors duration-300">
+    <nav class="nb-nav bg-nb-cream dark:bg-nb-ink2 sticky top-0 z-50 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
-                <a href="#" class="font-black text-2xl tracking-tight text-nb-ink dark:text-nb-yellow">
-                    <span class="nb-ul">زين.</span>
+                <a href="#" class="font-display font-black text-2xl tracking-tight text-nb-ink dark:text-nb-yellow">
+                    <span class="nb-ul">Zain.</span>
                 </a>
                 <div class="hidden md:flex gap-8 items-center">
-                    <a href="#" class="text-nb-ink dark:text-nb-cream hover:text-nb-ink dark:hover:text-nb-yellow transition font-bold text-sm">الرئيسية</a>
-                    <a href="#about" class="text-nb-ink dark:text-nb-cream hover:text-nb-ink dark:hover:text-nb-yellow transition font-bold text-sm">نبذة عني</a>
-                    <a href="#portfolio" class="text-nb-ink dark:text-nb-cream hover:text-nb-ink dark:hover:text-nb-yellow transition font-bold text-sm">أعمالي</a>
-                    <a href="#contact" class="text-nb-ink dark:text-nb-cream hover:text-nb-ink dark:hover:text-nb-yellow transition font-bold text-sm">تواصل معي</a>
-                    <a href="en/index.html" class="px-3 py-1 bg-nb-mint text-nb-ink rounded-md font-black text-sm nb-btn-ghost">English</a>
-                    <button id="theme-toggle" class="p-2 rounded-lg bg-nb-yellow dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow" style="border:2px solid #1A1A2E;box-shadow:2px 2px 0 #1A1A2E" aria-label="Toggle theme">
+                    <a href="#" class="text-nb-ink dark:text-nb-cream hover:text-nb-ink dark:hover:text-nb-yellow transition font-bold text-sm">Home</a>
+                    <a href="#about" class="text-nb-ink dark:text-nb-cream hover:text-nb-ink dark:hover:text-nb-yellow transition font-bold text-sm">About</a>
+                    <a href="#portfolio" class="text-nb-ink dark:text-nb-cream hover:text-nb-ink dark:hover:text-nb-yellow transition font-bold text-sm">Portfolio</a>
+                    <a href="#contact" class="text-nb-ink dark:text-nb-cream hover:text-nb-ink dark:hover:text-nb-yellow transition font-bold text-sm">Contact</a>
+                    <a href="../index.html" class="px-3 py-1 bg-nb-mint text-nb-ink rounded-md font-black text-sm nb-btn-ghost">عربي</a>
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-nb-yellow dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow nb-badge" aria-label="Toggle theme">
                         <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                         <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                     </button>
                 </div>
-                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-nb-yellow dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow" style="border:2px solid #1A1A2E;box-shadow:2px 2px 0 #1A1A2E">
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-nb-yellow dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow nb-badge">
                     <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     <svg id="close-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
         </div>
-        <div id="mobile-menu" class="md:hidden bg-nb-cream dark:bg-nb-ink2" style="border-top:3px solid #1A1A2E">
+        <div id="mobile-menu" class="md:hidden bg-nb-cream dark:bg-nb-ink2" style="border-top:3px solid var(--nb-ink)">
             <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-2">
-                <a href="#" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition">الرئيسية</a>
-                <a href="#about" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition">نبذة عني</a>
-                <a href="#portfolio" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition">أعمالي</a>
-                <a href="#contact" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition">تواصل معي</a>
+                <a href="#" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition">Home</a>
+                <a href="#about" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition">About</a>
+                <a href="#portfolio" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition">Portfolio</a>
+                <a href="#contact" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition">Contact</a>
                 <div class="flex items-center gap-3 pt-2" style="border-top:2px solid rgba(26,26,46,0.2)">
-                    <a href="en/index.html" class="px-3 py-1 bg-nb-mint text-nb-ink rounded-md font-black text-sm nb-badge">English</a>
+                    <a href="../index.html" class="px-3 py-1 bg-nb-mint text-nb-ink rounded-md font-black text-sm nb-badge">عربي</a>
                     <button id="mobile-theme-toggle" class="p-2 rounded-lg bg-nb-yellow dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow nb-badge" aria-label="Toggle theme">
                         <svg class="theme-dark-icon w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                         <svg class="theme-light-icon hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
@@ -261,63 +275,58 @@
         </div>
     </nav>
 
-    <!-- ── HERO ── -->
     <section id="hero" class="relative pt-24 pb-32 overflow-hidden nb-stripe">
-        <!-- Decorative circles -->
-        <div aria-hidden="true" class="absolute top-12 right-8 w-36 h-36 rounded-full bg-nb-yellow opacity-40 dark:opacity-25 pointer-events-none" style="border:3px solid #1A1A2E;box-shadow:6px 6px 0 #1A1A2E"></div>
-        <div aria-hidden="true" class="absolute bottom-12 left-8 w-24 h-24 rounded-full bg-nb-mint opacity-50 dark:opacity-20 pointer-events-none" style="border:3px solid #1A1A2E;box-shadow:5px 5px 0 #1A1A2E"></div>
-        <div aria-hidden="true" class="absolute top-1/2 left-1/4 w-16 h-16 rounded-full bg-nb-peach opacity-30 dark:opacity-10 pointer-events-none" style="border:2px solid #1A1A2E"></div>
+        <div aria-hidden="true" class="absolute top-12 left-8 w-36 h-36 rounded-full bg-nb-yellow opacity-40 dark:opacity-25 pointer-events-none" style="border:3px solid #1A1A2E;box-shadow:6px 6px 0 #1A1A2E"></div>
+        <div aria-hidden="true" class="absolute bottom-12 right-8 w-24 h-24 rounded-full bg-nb-mint opacity-50 dark:opacity-20 pointer-events-none" style="border:3px solid #1A1A2E;box-shadow:5px 5px 0 #1A1A2E"></div>
+        <div aria-hidden="true" class="absolute top-1/2 right-1/4 w-16 h-16 rounded-full bg-nb-peach opacity-30 dark:opacity-10 pointer-events-none" style="border:2px solid #1A1A2E"></div>
 
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
 
-                <div class="md:w-1/2 text-center md:text-right">
+                <div class="md:w-1/2 text-center md:text-left">
                     <div class="inline-flex items-center gap-2 mb-6 fade-up fade-up-1">
                         <span class="nb-badge px-3 py-1.5 rounded-full text-xs bg-nb-mint dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow">
-                            <span class="relative flex h-2 w-2 inline-block ml-1" style="vertical-align:middle">
+                            <span class="relative flex h-2 w-2 inline-block mr-1" style="vertical-align:middle">
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
                                 <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                             </span>
-                            متاح للتسويق التقني والتعاقد المؤسسي
+                            Available for B2B Tech Media & Freelance
                         </span>
                     </div>
 
-                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.15] mb-6 text-nb-ink dark:text-nb-cream fade-up fade-up-2 tracking-tight">
-                        أنا<br>
-                        <span class="flex flex-col items-center md:items-start h-[180px] sm:h-[150px] lg:h-[170px] mt-1">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-black leading-[1.15] mb-6 text-nb-ink dark:text-nb-cream fade-up fade-up-2 tracking-tight">
+                        I'm a<br>
+                        <span class="flex flex-col items-center md:items-start h-[120px] sm:h-[110px] lg:h-[130px] mt-1">
                             <span id="typewriter-text" class="text-nb-ink dark:text-nb-yellow nb-ul"></span>
-                            <span class="typewriter-cursor"></span>
                         </span>
                     </h1>
 
-                    <p class="text-base text-nb-ink/65 dark:text-nb-cream/65 mb-8 leading-relaxed max-w-md mx-auto md:mx-0 fade-up fade-up-3">
-                        أترجم التعقيد البرمجي والهندسي إلى حملات مرئية وإعلانات بيعية تحقق أعلى عائد على الاستثمار (ROI) للشركات والمؤسسات التقنية.
+                    <p class="text-base font-medium text-nb-ink/65 dark:text-nb-cream/65 mb-8 leading-relaxed max-w-md mx-auto md:mx-0 fade-up fade-up-3">
+                        I bridge engineering precision with commercial execution — helping technical companies scale through strategic media, content, and automation.
                     </p>
 
                     <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4 fade-up fade-up-4">
                         <a href="#portfolio" class="nb-btn bg-nb-yellow text-nb-ink px-8 py-4 rounded-xl text-center font-black">
-                            شاهد أعمالي
+                            See My Work
                         </a>
                         <a href="#contact" class="nb-btn-ghost bg-nb-cream dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow px-8 py-4 rounded-xl text-center font-bold">
-                            تواصل معي
+                            Get in Touch
                         </a>
                     </div>
 
                     <div class="mt-8 flex flex-wrap justify-center md:justify-start gap-2 fade-up fade-up-4">
-                        <span class="skill-tag">⚙️ هندسة أنظمة وتحكم</span>
-                        <span class="skill-tag">🎬 مونتاج إعلاني بيعي</span>
-                        <span class="skill-tag">📊 إدارة محتوى وميديا باينج (B2B)</span>
-                        <span class="skill-tag">🤖 أتمتة الذكاء الاصطناعي</span>
+                        <span class="skill-tag">⚙️ Systems Engineering</span>
+                        <span class="skill-tag">🎬 Conversion Video Editing</span>
+                        <span class="skill-tag">📊 B2B Media Buying</span>
+                        <span class="skill-tag">🤖 AI Workflow Automation</span>
                     </div>
                 </div>
 
-                <!-- Profile -->
                 <div class="md:w-1/2 flex justify-center md:justify-end fade-up fade-up-2">
                     <div class="relative group">
-                        <!-- Hard offset shadow behind -->
                         <div class="absolute inset-0 rounded-full bg-nb-yellow" style="border:3px solid #1A1A2E;transform:translate(10px,10px)"></div>
                         <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden bg-nb-card dark:bg-nb-ink2" style="border:3px solid #1A1A2E">
-                            <img src="assets/images/profile.jpg" alt="Zain Eldeen Majed" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            <img src="../assets/images/profile.jpg" loading="lazy" alt="Zain Eldeen Majed" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                 onerror="this.style.display='none';this.parentElement.innerHTML+='<div class=\'w-full h-full flex items-center justify-center text-6xl\'>🧑‍💻</div>'">
                         </div>
                     </div>
@@ -326,145 +335,143 @@
         </div>
     </section>
 
-    <!-- ── PORTFOLIO ── -->
     <section id="portfolio" class="py-24 bg-nb-card dark:bg-nb-ink2 transition-colors duration-300 nb-divider">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
-                <span class="inline-block nb-badge px-4 py-1.5 text-xs rounded-full bg-nb-peach dark:bg-nb-ink text-nb-ink dark:text-nb-yellow mb-4">ماذا أقدم؟</span>
-                <h2 class="text-3xl md:text-5xl font-black text-nb-ink dark:text-nb-cream mb-4">أعمالي وتخصصاتي</h2>
-                <p class="text-base text-nb-ink/60 dark:text-nb-cream/60">اختر المجال الذي تود استكشافه</p>
+                <span class="inline-block nb-badge px-4 py-1.5 text-xs rounded-full bg-nb-peach dark:bg-nb-ink text-nb-ink dark:text-nb-yellow mb-4">What I Do</span>
+                <h2 class="text-3xl md:text-5xl font-display font-black text-nb-ink dark:text-nb-cream mb-4">My Specialties</h2>
+                <p class="text-base text-nb-ink/60 dark:text-nb-cream/60">Pick a discipline to explore the work</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
-                <!-- Card 1 -->
                 <a href="marketing.html" class="portfolio-card group relative bg-nb-cream dark:bg-nb-ink p-8 block overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-2.5 bg-nb-peach"></div>
                     <div class="w-14 h-14 bg-nb-peach rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-2xl" style="border:2px solid #1A1A2E;box-shadow:3px 3px 0 #1A1A2E">📱</div>
-                    <h3 class="text-xl font-black text-nb-ink dark:text-nb-cream mb-3" style="min-height:4.5rem;line-height:1.5">التسويق التقني وإدارة الإعلانات</h3>
-                    <p class="text-sm text-nb-ink/65 dark:text-nb-cream/65 leading-relaxed mb-5">كتابة المحتوى الإعلاني المتخصص، تخطيط استراتيجيات المحتوى، والميديا باينج (Media Buying) عالي العائد للشركات البرمجية والصناعية الكبرى.</p>
+                    <h3 class="text-xl font-display font-black text-nb-ink dark:text-nb-cream mb-3" style="min-height:4.5rem;line-height:1.3">Tech Marketing & Media Buying</h3>
+                    <p class="text-sm font-medium text-nb-ink/65 dark:text-nb-cream/65 leading-relaxed mb-5">Ad content management, copywriting, and high-ROI media buying tailored for tech and enterprise operations.</p>
                     <span class="inline-flex items-center gap-1.5 text-xs font-black text-nb-ink dark:text-nb-yellow">
-                        عرض المشاريع <svg class="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7-7 7M3 12h18"></path></svg>
+                        View Projects <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14M12 5l7 7-7 7"></path></svg>
                     </span>
                 </a>
-                <!-- Card 2 -->
                 <a href="video.html" class="portfolio-card group relative bg-nb-cream dark:bg-nb-ink p-8 block overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-2.5 bg-nb-yellow"></div>
                     <div class="w-14 h-14 bg-nb-yellow rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-2xl" style="border:2px solid #1A1A2E;box-shadow:3px 3px 0 #1A1A2E">🎬</div>
-                    <h3 class="text-xl font-black text-nb-ink dark:text-nb-cream mb-3" style="min-height:4.5rem;line-height:1.5">صناعة ومونتاج الفيديو الإعلاني</h3>
-                    <p class="text-sm text-nb-ink/65 dark:text-nb-cream/65 leading-relaxed mb-5">تحرير الفيديوهات الإعلانية الموجهة للبيع المباشر، وصناعة الخطافات البصرية (Hooks) التي تضمن تثبيت انتباه المشاهد وزيادة التحويلات.</p>
+                    <h3 class="text-xl font-display font-black text-nb-ink dark:text-nb-cream mb-3" style="min-height:4.5rem;line-height:1.3">Conversion Video Production</h3>
+                    <p class="text-sm font-medium text-nb-ink/65 dark:text-nb-cream/65 leading-relaxed mb-5">Ad video editing, scroll-stopping hooks, and strategic visual narratives built to convert viewers into leads.</p>
                     <span class="inline-flex items-center gap-1.5 text-xs font-black text-nb-ink dark:text-nb-yellow">
-                        عرض المشاريع <svg class="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7-7 7M3 12h18"></path></svg>
+                        View Projects <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14M12 5l7 7-7 7"></path></svg>
                     </span>
                 </a>
-                <!-- Card 3 -->
                 <a href="engineering.html" class="portfolio-card group relative bg-nb-cream dark:bg-nb-ink p-8 block overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-2.5 bg-nb-mint"></div>
                     <div class="w-14 h-14 bg-nb-mint rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-2xl" style="border:2px solid #1A1A2E;box-shadow:3px 3px 0 #1A1A2E">⚙️</div>
-                    <h3 class="text-xl font-black text-nb-ink dark:text-nb-cream mb-3" style="min-height:4.5rem;line-height:1.5">الهندسة والتحكم الصناعي</h3>
-                    <p class="text-sm text-nb-ink/65 dark:text-nb-cream/65 leading-relaxed mb-5">دراسة وتطبيق أنظمة التحكم الذكية، برمجة متحكمات الأردوينو، والـ PLC، والـ Classic Control ببنية هندسية صارمة.</p>
+                    <h3 class="text-xl font-display font-black text-nb-ink dark:text-nb-cream mb-3" style="min-height:4.5rem;line-height:1.3">Industrial Systems Engineering</h3>
+                    <p class="text-sm font-medium text-nb-ink/65 dark:text-nb-cream/65 leading-relaxed mb-5">Control systems, PLC training, Classic Control, and automation architecture built with technical rigor.</p>
                     <span class="inline-flex items-center gap-1.5 text-xs font-black text-nb-ink dark:text-nb-yellow">
-                        عرض المشاريع <svg class="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7-7 7M3 12h18"></path></svg>
+                        View Projects <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14M12 5l7 7-7 7"></path></svg>
                     </span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- ── ABOUT ── -->
     <section id="about" class="py-24 bg-nb-cream dark:bg-nb-ink transition-colors duration-300 nb-divider">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20 reveal">
                 <div>
-                    <span class="inline-block nb-badge px-4 py-1.5 text-xs rounded-full bg-nb-lavender dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow mb-4">نبذة عني</span>
-                    <h2 class="text-3xl md:text-5xl font-black text-nb-ink dark:text-nb-cream mb-6 leading-tight">
-                        منطق هندسي صارم،<br>
-                        وعوائد تجارية <span class="nb-ul">ملموسة.</span>
+                    <span class="inline-block nb-badge px-4 py-1.5 text-xs rounded-full bg-nb-lavender dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow mb-4">About Me</span>
+                    <h2 class="text-3xl md:text-5xl font-display font-black text-nb-ink dark:text-nb-cream mb-6 leading-tight">
+                        Engineering logic.<br>
+                        Commercial <span class="nb-ul">results.</span>
                     </h2>
-                    <p class="text-base text-nb-ink/70 dark:text-nb-cream/70 leading-relaxed">
-                        طالب في كلية الهندسة الإلكترونية بجامعة المنوفية (قسم التحكم والآلات الصناعية)، وخبير استراتيجي في التسويق والوسائط التقنية. أدمج عقلية "التفكير النظمي" الهندسي التحليلي مع مهارات صناعة المحتوى الإعلاني الموجه للمبيعات. لا أؤمن بالمحتوى العشوائي، بل أبني خطوط إنتاج متكاملة للمحتوى والتسويق الرقمي تضمن لشركات البرمجيات والمؤسسات الصناعية الكبرى راحة البال، السيطرة على السوق، والنتائج المالية المستقرة.
+                    <p class="text-base font-medium text-nb-ink/70 dark:text-nb-cream/70 leading-relaxed">
+                        Control & Industrial Engineering student at Menoufia University and a Tech Media Strategist specializing in technical businesses. I bridge engineering architectures and visual storytelling, combining analytical rigor with high-conversion media execution to help software, industrial, and technology companies scale with clarity and measurable growth.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
                     <div class="nb-stat bg-nb-yellow dark:bg-nb-ink2 p-6 text-center cursor-default">
-                        <span class="block text-3xl font-black text-nb-ink dark:text-nb-yellow mb-1">مستقل متفوق</span>
-                        <span class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 uppercase tracking-wider">على منصة Upwork الدولية</span>
+                        <span class="block text-3xl font-black text-nb-ink dark:text-nb-yellow mb-1">Top-Tier</span>
+                        <span class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 uppercase tracking-wider">Upwork Freelancer</span>
                     </div>
                     <div class="nb-stat bg-nb-mint dark:bg-nb-ink2 p-6 text-center cursor-default">
-                        <span class="block text-3xl font-black text-nb-ink dark:text-nb-yellow mb-1">تخصص B2B</span>
-                        <span class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 uppercase tracking-wider">البرمجيات والصناعات الثقيلة</span>
+                        <span class="block text-3xl font-black text-nb-ink dark:text-nb-yellow mb-1">B2B Focus</span>
+                        <span class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 uppercase tracking-wider">Software & Heavy Industry</span>
                     </div>
                     <div class="nb-stat bg-nb-peach dark:bg-nb-ink2 p-6 text-center cursor-default">
-                        <span class="block text-3xl font-black text-nb-ink dark:text-nb-yellow mb-1">+3 عملاء</span>
-                        <span class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 uppercase tracking-wider">دوليون ناجحون</span>
+                        <span class="block text-3xl font-black text-nb-ink dark:text-nb-yellow mb-1">+3 Clients</span>
+                        <span class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 uppercase tracking-wider">Successful Globals</span>
                     </div>
                     <div class="nb-stat bg-nb-lavender dark:bg-nb-ink2 p-6 text-center cursor-default col-span-2">
                         <span class="block text-4xl font-black text-nb-ink dark:text-nb-yellow mb-1">2027</span>
-                        <span class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 uppercase tracking-wider">سنة التخرج · كلية الهندسة الإلكترونية بجامعة المنوفية</span>
+                        <span class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 uppercase tracking-wider">Graduation · Electronic Eng, Menoufia Univ.</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Timeline card -->
             <div class="nb-card bg-nb-card dark:bg-nb-ink2 p-8 md:p-12 reveal">
-                <span class="inline-block nb-badge px-4 py-1.5 text-xs rounded-full bg-nb-yellow text-nb-ink mb-2">المسار</span>
-                <h3 class="text-2xl font-black text-nb-ink dark:text-nb-cream mb-14">رحلتي الحقيقية</h3>
+                <span class="inline-block nb-badge px-4 py-1.5 text-xs rounded-full bg-nb-yellow text-nb-ink mb-2">The Path</span>
+                <h3 class="text-2xl font-display font-black text-nb-ink dark:text-nb-cream mb-14">My Journey</h3>
 
                 <div class="relative w-full mb-14 pt-12">
-                    <div class="absolute top-1/2 right-0 w-full h-0.5 -translate-y-1/2" style="border-top:2.5px dashed rgba(26,26,46,0.25)"></div>
-                    <div class="dark:hidden absolute top-1/2 right-0 w-full h-0.5 -translate-y-1/2" style="display:none"></div>
+                    <div class="absolute top-1/2 left-0 w-full h-0.5 -translate-y-1/2" style="border-top:2.5px dashed rgba(26,26,46,0.25)"></div>
+                    <div class="dark:hidden absolute top-1/2 left-0 w-full h-0.5 -translate-y-1/2" style="display:none"></div>
+                    
                     <div class="relative flex justify-between items-center w-full max-w-4xl mx-auto px-2">
-
                         <div class="timeline-node group relative cursor-pointer flex flex-col items-center" data-index="0" tabindex="0" role="button">
-                            <div class="absolute -top-10 right-1/2 translate-x-1/2 whitespace-nowrap text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none bg-nb-ink text-nb-yellow" style="border:2px solid #FFE566;box-shadow:3px 3px 0 #FFE566">🎓 التأسيس الهندسي</div>
+                            <div class="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none bg-nb-ink text-nb-yellow" style="border:2px solid #FFE566;box-shadow:3px 3px 0 #FFE566">🎓 Engineering Genesis</div>
                             <div class="node-circle w-5 h-5 rounded-full bg-nb-ink/20 dark:bg-nb-cream/20 z-10" style="border:3px solid #1A1A2E"></div>
                             <span class="absolute -bottom-8 font-black text-xs text-nb-ink/45 dark:text-nb-cream/35">2022</span>
                         </div>
                         <div class="timeline-node group relative cursor-pointer flex flex-col items-center" data-index="1" tabindex="0" role="button">
-                            <div class="absolute -top-10 right-1/2 translate-x-1/2 whitespace-nowrap text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none bg-nb-ink text-nb-yellow" style="border:2px solid #FFE566;box-shadow:3px 3px 0 #FFE566">🤝 انطلاق العمل الحر والتجاري</div>
+                            <div class="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none bg-nb-ink text-nb-yellow" style="border:2px solid #FFE566;box-shadow:3px 3px 0 #FFE566">🤝 Early Freelance</div>
                             <div class="node-circle w-5 h-5 rounded-full bg-nb-ink/20 dark:bg-nb-cream/20 z-10" style="border:3px solid #1A1A2E"></div>
                             <span class="absolute -bottom-8 font-black text-xs text-nb-ink/45 dark:text-nb-cream/35">2023</span>
                         </div>
                         <div class="timeline-node group relative cursor-pointer flex flex-col items-center" data-index="2" tabindex="0" role="button">
-                            <div class="absolute -top-10 right-1/2 translate-x-1/2 whitespace-nowrap text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none bg-nb-ink text-nb-yellow" style="border:2px solid #FFE566;box-shadow:3px 3px 0 #FFE566">🎬 الأتمتة والتحكم الآلي</div>
+                            <div class="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none bg-nb-ink text-nb-yellow" style="border:2px solid #FFE566;box-shadow:3px 3px 0 #FFE566">🎬 Automation Focus</div>
                             <div class="node-circle w-5 h-5 rounded-full bg-nb-ink/20 dark:bg-nb-cream/20 z-10" style="border:3px solid #1A1A2E"></div>
                             <span class="absolute -bottom-8 font-black text-xs text-nb-ink/45 dark:text-nb-cream/35">2024</span>
                         </div>
                         <div class="timeline-node group relative cursor-pointer flex flex-col items-center" data-index="3" tabindex="0" role="button">
-                            <div class="absolute -top-10 right-1/2 translate-x-1/2 whitespace-nowrap text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none bg-nb-ink text-nb-yellow" style="border:2px solid #FFE566;box-shadow:3px 3px 0 #FFE566">📊 التسويق التقني والاعتمادات</div>
+                            <div class="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none bg-nb-ink text-nb-yellow" style="border:2px solid #FFE566;box-shadow:3px 3px 0 #FFE566">📊 Tech Marketing</div>
                             <div class="node-circle w-5 h-5 rounded-full bg-nb-ink/20 dark:bg-nb-cream/20 z-10" style="border:3px solid #1A1A2E"></div>
                             <span class="absolute -bottom-8 font-black text-xs text-nb-ink/45 dark:text-nb-cream/35">2025</span>
                         </div>
                         <div class="timeline-node group relative cursor-pointer flex flex-col items-center" data-index="4" tabindex="0" role="button">
-                            <div class="absolute -top-10 right-1/2 translate-x-1/2 whitespace-nowrap text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none bg-nb-ink text-nb-yellow" style="border:2px solid #FFE566;box-shadow:3px 3px 0 #FFE566">🚀 القيادة والشركات الكبرى</div>
+                            <div class="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none bg-nb-ink text-nb-yellow" style="border:2px solid #FFE566;box-shadow:3px 3px 0 #FFE566">🚀 Enterprise Execution</div>
                             <div class="node-circle w-5 h-5 rounded-full bg-nb-ink/20 dark:bg-nb-cream/20 z-10" style="border:3px solid #1A1A2E"></div>
-                            <span class="absolute -bottom-8 font-black text-xs text-nb-ink/45 dark:text-nb-cream/35">اليوم</span>
+                            <span class="absolute -bottom-8 font-black text-xs text-nb-ink/45 dark:text-nb-cream/35">Now</span>
                         </div>
                     </div>
                 </div>
 
                 <div id="timeline-details-box" class="bg-nb-cream dark:bg-nb-ink p-6 rounded-2xl transition-all duration-300 opacity-0 translate-y-2 mt-6" style="border:2.5px solid #1A1A2E;box-shadow:5px 5px 0 #1A1A2E">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
-                        <h4 id="timeline-title" class="text-xl font-black text-nb-ink dark:text-nb-cream"></h4>
+                        <h4 id="timeline-title" class="text-xl font-display font-black text-nb-ink dark:text-nb-cream"></h4>
                         <span id="timeline-date" class="px-3 py-1 bg-nb-yellow text-nb-ink rounded-full text-xs font-black nb-badge"></span>
                     </div>
                     <div id="timeline-org" class="text-xs font-bold text-nb-ink/50 dark:text-nb-cream/40 mb-3 uppercase tracking-wider"></div>
-                    <p id="timeline-text" class="text-nb-ink/70 dark:text-nb-cream/70 leading-relaxed text-sm"></p>
+                    <p id="timeline-text" class="text-nb-ink/70 dark:text-nb-cream/70 font-medium leading-relaxed text-sm"></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ── CONTACT ── -->
     <section id="contact" class="py-24 bg-nb-yellow dark:bg-nb-ink2 transition-colors duration-300 nb-divider">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <span class="inline-block nb-badge px-4 py-1.5 text-xs rounded-full bg-nb-cream text-nb-ink mb-4 reveal">لنعمل معاً</span>
-            <h2 class="text-3xl md:text-5xl font-black text-nb-ink dark:text-nb-cream mb-6 reveal">مستعد لبناء شيء استثنائي؟</h2>
+            <span class="inline-block nb-badge px-4 py-1.5 text-xs rounded-full bg-nb-cream text-nb-ink mb-4 reveal">Work Together</span>
+            <h2 class="text-3xl md:text-5xl font-display font-black text-nb-ink dark:text-nb-cream mb-6 reveal">Let's build systems that scale.</h2>
+            <p class="text-base font-medium text-nb-ink/70 dark:text-nb-cream/70 mb-12 max-w-2xl mx-auto reveal leading-relaxed">
+                Looking for a technical marketer, conversion video editor, or analytical strategist? I scale operations end-to-end — from deep systematic positioning to high-converting visual media.
+            </p>
+
             <div class="flex flex-wrap justify-center gap-4 mb-14 reveal">
                 <a href="https://www.upwork.com/freelancers/~01d503ee7d17d3e651" target="_blank" class="nb-btn flex items-center gap-2.5 px-7 py-3 bg-[#14a800] text-white rounded-xl">Upwork</a>
-                <a href="https://mostaql.com/u/Zain_majed48" target="_blank" class="nb-btn flex items-center gap-2.5 px-7 py-3 bg-[#2386c8] text-white rounded-xl">مستقل</a>
+                <a href="https://mostaql.com/u/Zain_majed48" target="_blank" class="nb-btn flex items-center gap-2.5 px-7 py-3 bg-[#2386c8] text-white rounded-xl">Mostaql</a>
                 <a href="https://www.linkedin.com/in/zain-eldeen-majed" target="_blank" class="nb-btn flex items-center gap-2.5 px-7 py-3 bg-[#0a66c2] text-white rounded-xl">LinkedIn</a>
             </div>
+
             <div class="pt-10 reveal" style="border-top:2px solid rgba(26,26,46,0.2)">
                 <p class="text-xs font-black text-nb-ink/50 uppercase tracking-widest mb-6">Also on</p>
                 <div class="flex justify-center gap-5">
@@ -527,9 +534,10 @@
         });
 
         /* ── Typewriter ── */
-        const roles = ['خبير تسويق تقني (Tech Media).', 'محرر فيديو إعلاني بيعي.', 'مهندس أنظمة وتحكم آلي.', 'مؤسس أنظمة تشغيل تجارية.'];
+        const roles = ['Tech Media Strategist.', 'B2B Growth Partner.', 'Automation Builder.', 'Control Systems Engineer.'];
         let roleIndex = 0, charIndex = 0, deleting = false;
         const typeEl = document.getElementById('typewriter-text');
+        
         function type() {
             const current = roles[roleIndex];
             if (!deleting) {
@@ -549,11 +557,11 @@
 
         /* ── Timeline ── */
         const timelineData = [
-            { title: "الالتحاق بكلية الهندسة الإلكترونية", org: "جامعة المنوفية · قسم التحكم والآلات الصناعية", date: "أواخر 2022", text: "بناء التفكير المنطقي والتحليلي الصارم عبر دراسة الدوائر الإلكترونية المعقدة وأنظمة التحكم، وتحويل حل المشكلات إلى رد فعل تلقائي." },
-            { title: "إطلاق العمل الحر وتأسيس خط إمداد تجاري", org: "منصة Upwork العالمية · أعمال حرة مستقلة", date: "أوائل 2023", text: "بدء العمل الاحترافي كمحرر فيديو على منصة Upwork الدولية حتى منتصف العام. بالتوازي، استغلال فجوات السوق وتأسيس خط إمداد مستقل لجمع الكراتين وإعادة بيعها للمصانع الكبرى." },
-            { title: "التعمق في الأتمتة والتحكم الصناعي", org: "الدورات الهندسية المتقدمة", date: "2024", text: "دراسة وتطبيق تكنولوجيا الإلكترونيات الدقيقة عبر برمجة متحكمات الأردوينو، وحضور برامج تدريبية متخصصة في الـ PLC والـ Classic Control لتصميم البنية التحتية الكهربائية للآلات." },
-            { title: "التسويق التقني والاعتمادات الرقمية الكبرى", org: "منحة رواد مصر الرقمية (DEPI) · مبادرة ITIDA Gigs · مؤسسة The Insider", date: "صيف 2025", text: "التخرج من تراك الماركتنج بمنحة رواد مصر الرقمية ومبادرة ITIDA Gigs، وإتمام 3 وظائف حرة ناجحة لعملاء دوليين، بالتوازي مع العمل لـ 3 أشهر ككاتب محتوى وصانع بوستات في نشاط The Insider Menofia." },
-            { title: "القيادة التنفيذية وإعلانات الشركات الكبرى", org: "شركة Puresoft · شركة CRT · رئاسة النشاط الطلابي", date: "أوائل 2026 - اليوم", text: "تولي منصب محرر فيديو رئيسي ومستشار تسويق في شركة Puresoft للبرمجيات والأنظمة المحاسبية، وإدارة المحتوى الإعلاني والميديا باينج بالكامل في شركة CRT لمعالجة النفايات الخطرة، بالتوازي مع قيادة وتوسيع حجم الأعضاء كرئيس للنشاط الطلابي الرسمي بالكلية." }
+            { title: "Enrolled in Faculty of Electronic Engineering", org: "Menoufia University · Industrial Control Dept.", date: "Late 2022", text: "Built the absolute logical foundation — studying complex electronic systems, instrumentation, and programming architectures. Problem-solving became my primary reflex." },
+            { title: "Upwork Launch & Supply Chain Arbitrage", org: "Global Freelancing & Self-Established Logistics", date: "Early 2023", text: "Successfully launched professional freelance video editing on Upwork. Simultaneously capitalized on localized supply chain arbitrage by establishing an independent cardboard collection network for manufacturing plants." },
+            { title: "Industrial Automation & Engineering Depth", org: "Technical Automations Training", date: "2024", text: "Mastered specialized technical hardware layers: Arduino systems, basic PLC (Programmable Logic Controllers), and Classic Control electrical architecture." },
+            { title: "Technical Marketing Mastery & Hybrid Credentialing", org: "DEPI (Marketing Track) · ITIDA Gigs · The Insider Menofia", date: "Summer 2025", text: "Graduated from the Digital Egypt Pioneers Initiative (DEPI) and ITIDA Gigs. Completed 3 verified cross-border contracts, and drove content creation for 'The Insider Menofia' student publication." },
+            { title: "Enterprise Scaling & Leadership Execution", org: "Puresoft · CRT · Student Activity Presidency", date: "2026 - Present", text: "Currently executing tech-heavy multimedia editing and consulting at Puresoft (Accounting Software & Mobile Apps) and heading Ad Strategy/Media Buying at CRT (Hazardous Waste Treatment). Simultaneously driving large-scale team scaling as President of a major campus Student Activity." }
         ];
 
         const nodes = document.querySelectorAll('.timeline-node');
@@ -564,11 +572,11 @@
                 const circle = node.querySelector('.node-circle');
                 const yearSpan = node.querySelector('span:not([class*="absolute -top"])');
                 if (idx === index) {
-                    circle.style.cssText = "width:1.25rem;height:1.25rem;border-radius:9999px;border:3px solid #1A1A2E;background:#FFE566;box-shadow:3px 3px 0 #1A1A2E;transform:scale(1.3);z-index:10;transition:all 0.3s;";
-                    if(yearSpan) yearSpan.className = "absolute -bottom-8 font-black text-xs text-nb-ink dark:text-nb-yellow";
+                    circle.style.cssText = "width:1.25rem;height:1.25rem;border-radius:9999px;border:3px solid #1A1A2E;background:#FFE566;box-shadow:3px 3px 0 #1A1A2E;transform:scale(1.3);z-index:10;transition:all 0.3s ease;";
+                    if(yearSpan) yearSpan.className = "absolute -bottom-8 font-black text-xs text-nb-ink dark:text-nb-yellow z-20 whitespace-nowrap";
                 } else {
-                    circle.style.cssText = "width:1.25rem;height:1.25rem;border-radius:9999px;border:3px solid #1A1A2E;background:rgba(26,26,46,0.15);box-shadow:none;transform:scale(1);z-index:10;transition:all 0.3s;";
-                    if(yearSpan) yearSpan.className = "absolute -bottom-8 font-black text-xs text-nb-ink/45 dark:text-nb-cream/35";
+                    circle.style.cssText = "width:1.25rem;height:1.25rem;border-radius:9999px;border:3px solid #1A1A2E;background:rgba(26,26,46,0.15);box-shadow:none;transform:scale(1);z-index:10;transition:all 0.3s ease;";
+                    if(yearSpan) yearSpan.className = "absolute -bottom-8 font-black text-xs text-nb-ink/45 dark:text-nb-cream/35 transition-colors whitespace-nowrap";
                 }
             });
             detailsBox.classList.add('opacity-0','translate-y-2');

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Digital marketing strategies, paid campaigns, brand identity, and content — Zain Eldeen Majed.">
+    <meta property="og:title" content="Digital Marketing | Zain Eldeen Majed">
+    <meta property="og:description" content="Strategy, paid campaigns, brand identity, and content that turns attention into customers.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="../assets/images/og-cover.jpg">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" href="../favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Digital Marketing | Zain Eldeen Majed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Space+Grotesk:wght@700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'nb-yellow':   '#FFE566',
+                        'nb-peach':    '#FFB4A2',
+                        'nb-mint':     '#B5EAD7',
+                        'nb-lavender': '#C7B8EA',
+                        'nb-sky':      '#A8D8EA',
+                        'nb-ink':      '#1A1A2E',
+                        'nb-ink2':     '#16213E',
+                        'nb-cream':    '#FFFBF0',
+                        'nb-card':     '#F5F0E8',
+                    },
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --nb-shadow-sm:  3px 3px 0 #1A1A2E;
+            --nb-shadow-md:  5px 5px 0 #1A1A2E;
+            --nb-shadow-lg:  8px 8px 0 #1A1A2E;
+            --nb-shadow-xl: 12px 12px 0 #1A1A2E;
+        }
+        .dark {
+            --nb-shadow-sm:  3px 3px 0 #FFE566;
+            --nb-shadow-md:  5px 5px 0 #FFE566;
+            --nb-shadow-lg:  8px 8px 0 #FFE566;
+            --nb-shadow-xl: 12px 12px 0 #FFE566;
+        }
+
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        h1, h2, h3, h4, .font-display { font-family: 'Space Grotesk', sans-serif; }
+        * { word-wrap: break-word; }
+        img { max-width: 100%; }
+
+        .nb-nav { border-bottom: 3px solid #1A1A2E; }
+        .dark .nb-nav { border-bottom-color: #FFE566; }
+
+        .nb-divider { border-top: 3px solid #1A1A2E; }
+        .dark .nb-divider { border-top-color: #FFE566; }
+
+        .nb-badge {
+            border: 2px solid #1A1A2E;
+            box-shadow: 2px 2px 0 #1A1A2E;
+            font-weight: 900;
+        }
+        .dark .nb-badge { border-color: #FFE566; box-shadow: 2px 2px 0 #FFE566; }
+
+        .portfolio-card {
+            border: 3px solid #1A1A2E;
+            box-shadow: var(--nb-shadow-md);
+            transition: box-shadow 0.15s ease, transform 0.15s ease;
+            border-radius: 16px;
+        }
+        .dark .portfolio-card { border-color: #FFE566; }
+        .portfolio-card:hover { box-shadow: var(--nb-shadow-xl); transform: translate(-4px,-4px); }
+
+        .skill-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 5px 14px; border-radius: 100px; font-size: 0.8rem;
+            font-weight: 800; border: 2px solid #1A1A2E;
+            box-shadow: 2px 2px 0 #1A1A2E; background: #FFFBF0; color: #1A1A2E;
+        }
+        .dark .skill-tag { background: #1A1A2E; color: #FFE566; border-color: #FFE566; box-shadow: 2px 2px 0 #FFE566; }
+
+        .nb-stripe {
+            background-image: repeating-linear-gradient(
+                45deg, transparent, transparent 10px,
+                rgba(26,26,46,0.035) 10px, rgba(26,26,46,0.035) 11px
+            );
+        }
+        .dark .nb-stripe {
+            background-image: repeating-linear-gradient(
+                45deg, transparent, transparent 10px,
+                rgba(255,229,102,0.04) 10px, rgba(255,229,102,0.04) 11px
+            );
+        }
+
+        #mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, opacity 0.3s ease; opacity: 0; }
+        #mobile-menu.open { max-height: 500px; opacity: 1; }
+    </style>
+</head>
+<body class="bg-nb-cream text-nb-ink dark:bg-nb-ink dark:text-nb-cream antialiased transition-colors duration-300">
+
+    <nav class="nb-nav bg-nb-cream/98 dark:bg-nb-ink2/95 backdrop-blur-sm sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="index.html" class="font-display font-black text-2xl tracking-tight text-nb-ink dark:text-nb-yellow">
+                    <span style="text-decoration: underline; text-decoration-color: #FFE566; text-underline-offset: 6px; text-decoration-thickness: 4px;">Zain.</span>
+                </a>
+                <div class="hidden md:flex gap-8 items-center">
+                    <a href="index.html" class="text-nb-ink dark:text-nb-cream hover:text-nb-ink dark:hover:text-nb-yellow font-bold text-sm transition">Home</a>
+                    <a href="index.html#portfolio" class="text-nb-ink dark:text-nb-yellow font-bold text-sm">Portfolio</a>
+                    <a href="../marketing.html" class="px-3 py-1 bg-nb-mint text-nb-ink rounded-md font-black text-sm border-2 border-nb-ink" style="box-shadow: 2px 2px 0 #1A1A2E">عربي</a>
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-nb-yellow dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow" style="border:2px solid #1A1A2E;box-shadow:2px 2px 0 #1A1A2E" aria-label="Toggle theme">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-nb-yellow dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow" style="border:2px solid #1A1A2E;box-shadow:2px 2px 0 #1A1A2E">
+                    <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <svg id="close-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden bg-nb-cream dark:bg-nb-ink2" style="border-top:3px solid #1A1A2E">
+            <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-2">
+                <a href="index.html" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition">Home</a>
+                <a href="../marketing.html" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition">عربي</a>
+                <div class="flex items-center gap-3 pt-2" style="border-top:2px solid rgba(26,26,46,0.2)">
+                    <button id="mobile-theme-toggle" class="p-2 rounded-lg bg-nb-yellow dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow nb-badge" aria-label="Toggle theme">
+                        <svg class="theme-dark-icon w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg class="theme-light-icon hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-nb-cream dark:bg-nb-ink py-16 nb-divider nb-stripe transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <span class="inline-block nb-badge px-4 py-1.5 text-xs rounded-full bg-nb-peach dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow mb-4 uppercase tracking-widest">My Work</span>
+            <h1 class="text-4xl md:text-5xl font-display font-black text-nb-ink dark:text-nb-cream mb-4">Digital Marketing</h1>
+            <p class="text-base font-medium text-nb-ink/70 dark:text-nb-cream/70 max-w-xl mx-auto leading-relaxed">
+                Strategy, paid campaigns, brand identity, and content that turns attention into customers.
+            </p>
+        </div>
+    </header>
+
+    <section class="py-16 bg-nb-card dark:bg-nb-ink2 min-h-[50vh]">
+        <div class="max-w-6xl mx-auto px-4">
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <script src="../assets/js/projects-data.js"></script>
+    <script>
+        const currentLang = "en";
+
+        const applyTheme = (isDark) => {
+            isDark ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+        };
+
+        const syncThemeIcons = () => {
+            const dark = document.documentElement.classList.contains('dark');
+            document.getElementById('theme-toggle-dark-icon')?.classList.toggle('hidden', dark);
+            document.getElementById('theme-toggle-light-icon')?.classList.toggle('hidden', !dark);
+            document.querySelector('.theme-dark-icon')?.classList.toggle('hidden', dark);
+            document.querySelector('.theme-light-icon')?.classList.toggle('hidden', !dark);
+        };
+
+        applyTheme(localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches));
+        syncThemeIcons();
+
+        document.getElementById('theme-toggle')?.addEventListener('click', () => { applyTheme(!document.documentElement.classList.contains('dark')); syncThemeIcons(); });
+        document.getElementById('mobile-theme-toggle')?.addEventListener('click', () => { applyTheme(!document.documentElement.classList.contains('dark')); syncThemeIcons(); });
+
+        document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            const hamburger = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+            menu.classList.toggle('open');
+            hamburger?.classList.toggle('hidden');
+            closeIcon?.classList.toggle('hidden');
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const gridContainer = document.getElementById('projects-grid');
+
+            if (typeof marketingProjects === 'undefined' || marketingProjects.length === 0) {
+                gridContainer.innerHTML = `
+                    <div class="col-span-full text-center py-24">
+                        <div class="w-16 h-16 bg-nb-peach border-4 border-nb-ink rounded-2xl flex items-center justify-center mx-auto mb-5 text-3xl" style="box-shadow: 4px 4px 0 #1A1A2E;">📱</div>
+                        <h3 class="text-xl font-display font-black text-nb-ink dark:text-nb-cream mb-2">No projects yet</h3>
+                    </div>`;
+                return;
+            }
+
+            marketingProjects.forEach(project => {
+                const title = getText(project.title, currentLang);
+                const desc = getText(project.shortDescription, currentLang);
+                const thumb = project.thumbnail ? `../${project.thumbnail}` : '';
+                const toolsHTML = (project.tools || []).map(t => `<span class="skill-tag">${t}</span>`).join('');
+
+                gridContainer.innerHTML += `
+                    <a href="project-detail.html?id=${project.id}" class="portfolio-card group bg-nb-cream dark:bg-nb-ink p-4 flex flex-col h-full relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-2.5 bg-nb-peach"></div>
+                        <div class="aspect-video overflow-hidden relative bg-nb-ink rounded-xl border-2 border-nb-ink dark:border-nb-yellow mt-2" style="box-shadow: 3px 3px 0 currentColor;">
+                            ${thumb ? `<img src="${thumb}" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">` : `<div class="w-full h-full flex items-center justify-center text-4xl bg-nb-peach">📱</div>`}
+                        </div>
+                        <div class="pt-5 pb-2 flex-grow flex flex-col">
+                            <h3 class="text-xl font-display font-black text-nb-ink dark:text-nb-cream mb-2 leading-snug">${title}</h3>
+                            <p class="text-sm font-medium text-nb-ink/70 dark:text-nb-cream/70 mb-4 flex-grow leading-relaxed">${desc}</p>
+                            ${toolsHTML ? `<div class="flex flex-wrap gap-1.5 mb-4">${toolsHTML}</div>` : ''}
+                            <div class="mt-auto pt-4 border-t-2 border-nb-ink/10 dark:border-nb-yellow/10 flex items-center justify-between">
+                                <span class="inline-flex items-center gap-1.5 text-xs font-black text-nb-ink dark:text-nb-yellow">
+                                    View Case Study
+                                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                                </span>
+                            </div>
+                        </div>
+                    </a>`;
+            });
+        });
+    </script>
+</body>
+</html>
