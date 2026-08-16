@@ -43,11 +43,13 @@
             --nb-shadow-xl: 12px 12px 0 #1A1A2E;
         }
         .dark {
-            --nb-shadow-sm:  3px 3px 0 #FFE566;
-            --nb-shadow-md:  5px 5px 0 #FFE566;
-            --nb-shadow-lg:  8px 8px 0 #FFE566;
-            --nb-shadow-xl: 12px 12px 0 #FFE566;
+            --nb-shadow-sm:  3px 3px 0 #090D1C;
+            --nb-shadow-md:  5px 5px 0 #090D1C;
+            --nb-shadow-lg:  8px 8px 0 #090D1C;
+            --nb-shadow-xl: 12px 12px 0 #090D1C;
         }
+
+        html.dark body { background:#10182C; }
 
         body { font-family: 'Noto Sans Arabic', sans-serif; overflow-x: hidden; }
         * { word-wrap: break-word; }
@@ -71,7 +73,7 @@
             box-shadow: var(--nb-shadow-md);
             border-radius: 14px;
         }
-        .dark .nb-card { border-color: #FFE566; }
+        html.dark .nb-card { border-color: #667493; }
 
         .nb-btn {
             border: 3px solid #1A1A2E;
@@ -80,8 +82,9 @@
             transition: box-shadow 0.12s, transform 0.12s;
             background: #FFE566; color: #1A1A2E;
         }
-        .dark .nb-btn { border-color: #FFE566; }
+        html.dark .nb-btn { border-color: #FFE566; box-shadow: 5px 5px 0 #FFE566; }
         .nb-btn:hover { box-shadow: var(--nb-shadow-lg); transform: translate(-2px,-2px); }
+        html.dark .nb-btn:hover { box-shadow: 8px 8px 0 #FFE566; }
         .nb-btn:active { box-shadow: 1px 1px 0 #1A1A2E; transform: translate(2px,2px); }
         .dark .nb-btn:active { box-shadow: 1px 1px 0 #FFE566; }
 
@@ -92,8 +95,9 @@
             transition: box-shadow 0.12s, transform 0.12s;
             background: #FFFBF0; color: #1A1A2E;
         }
-        .dark .nb-btn-ghost { border-color: #FFE566; background: #16213E; color: #FFFBF0;}
+        html.dark .nb-btn-ghost { border-color: #FFE566; background: #16213E; color: #FFFBF0; box-shadow: 3px 3px 0 #FFE566;}
         .nb-btn-ghost:hover { box-shadow: var(--nb-shadow-md); transform: translate(-2px,-2px); }
+        html.dark .nb-btn-ghost:hover { box-shadow: 5px 5px 0 #FFE566; }
 
         .skill-tag {
             display: inline-flex; align-items: center; gap: 6px;
@@ -101,7 +105,7 @@
             font-weight: 800; border: 2px solid #1A1A2E;
             box-shadow: 2px 2px 0 #1A1A2E; background: #FFFBF0; color: #1A1A2E;
         }
-        .dark .skill-tag { background: #1A1A2E; color: #FFE566; border-color: #FFE566; box-shadow: 2px 2px 0 #FFE566; }
+        .dark .skill-tag { background: #1B3F3A; border-color: #6FCAB7; box-shadow: 2px 2px 0 #090D1C; color: #FFFBF0; }
 
         .nb-stripe {
             background-image: repeating-linear-gradient(
@@ -118,9 +122,34 @@
 
         #mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, opacity 0.3s ease; opacity: 0; }
         #mobile-menu.open { max-height: 500px; opacity: 1; }
+
+        html.dark .page-header { background-color:#15213A !important; }
+
+        /* Paper-plane cursor: enabled only by the script on mouse devices. */
+        #paper-plane-trail, #paper-plane-cursor { position:fixed; pointer-events:none; opacity:0; transition:opacity .2s ease; }
+        #paper-plane-trail { inset:0; z-index:9997; }
+        #paper-plane-cursor { top:0; left:0; width:28px; height:28px; z-index:9998; transform-origin:center; }
+        #paper-plane-cursor svg { display:block; width:100%; height:100%; filter:drop-shadow(2px 2px 0 rgba(26,26,46,.18)); }
+        #paper-plane-cursor.is-over-action svg { animation:planeFlap .45s ease-in-out infinite alternate; filter:drop-shadow(2px 3px 0 rgba(26,26,46,.25)); }
+        #paper-plane-cursor.is-over-action path:first-child { fill:#B5EAD7; }
+        .plane-target { box-shadow:0 0 0 4px rgba(181,234,215,.6), var(--nb-shadow-md) !important; }
+        html.dark .plane-target { box-shadow:0 0 0 4px rgba(181,234,215,.55), 5px 5px 0 #FFE566 !important; }
+        @keyframes planeFlap { from{transform:rotate(-10deg) translateY(0)} to{transform:rotate(10deg) translateY(-3px)} }
+        .paper-plane-cursor-ready #paper-plane-trail, .paper-plane-cursor-ready #paper-plane-cursor { opacity:1; }
+        @media (pointer:fine) and (prefers-reduced-motion:no-preference) {
+            .paper-plane-cursor-ready, .paper-plane-cursor-ready * { cursor:none !important; }
+        }
     </style>
 </head>
 <body class="bg-nb-cream text-nb-ink dark:bg-nb-ink dark:text-nb-cream antialiased transition-colors duration-300">
+
+    <canvas id="paper-plane-trail" aria-hidden="true"></canvas>
+    <div id="paper-plane-cursor" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.5 3.5 21.5 11.6l-8.3 2.2-3.1 6.7L2.5 3.5Z" fill="#FFE566" stroke="#1A1A2E" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="m13.2 13.8-3.1 6.7.2-8.9" stroke="#1A1A2E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
 
     <nav class="nb-nav bg-nb-cream/98 dark:bg-nb-ink2/95 backdrop-blur-sm sticky top-0 z-50 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -137,7 +166,7 @@
                         <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                     </button>
                 </div>
-                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-nb-yellow dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow" style="border:2px solid #1A1A2E;box-shadow:2px 2px 0 #1A1A2E">
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-nb-yellow dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow" style="border:2px solid #1A1A2E;box-shadow:2px 2px 0 #1A1A2E" aria-label="Menu">
                     <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     <svg id="close-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
@@ -163,7 +192,7 @@
     </div>
 
     <div id="project-container" class="hidden">
-        <header class="bg-nb-cream dark:bg-nb-ink pt-16 pb-24 nb-divider nb-stripe">
+        <header class="page-header bg-nb-cream dark:bg-nb-ink pt-16 pb-24 nb-divider nb-stripe">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-right">
                 <span id="project-category" class="inline-flex items-center px-4 py-1.5 bg-nb-sky dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow rounded-full text-xs font-black border-2 border-nb-ink dark:border-nb-yellow mb-6" style="box-shadow: 2px 2px 0 currentColor;"></span>
                 <h1 id="project-title" class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-nb-ink dark:text-nb-cream leading-tight bg-white dark:bg-nb-ink inline-block px-4 py-2 border-4 border-nb-ink dark:border-nb-yellow" style="box-shadow: 8px 8px 0 currentColor;"></h1>
@@ -292,6 +321,107 @@
                 }
             }
         });
+
+        /* ── Paper-plane cursor with a soft dashed trail (mouse devices only) ── */
+        const cursorMedia = window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)');
+        if (cursorMedia.matches) {
+            const plane = document.getElementById('paper-plane-cursor');
+            const trail = document.getElementById('paper-plane-trail');
+            const context = trail.getContext('2d');
+            const points = [];
+            let cursorX = window.innerWidth / 2;
+            let cursorY = window.innerHeight / 2;
+            let lastX = cursorX;
+            let lastY = cursorY;
+            let angle = 0;
+            let planeScale = 1;
+            let frameId;
+
+            function resizeTrail() {
+                const ratio = Math.min(window.devicePixelRatio || 1, 2);
+                trail.width = window.innerWidth * ratio;
+                trail.height = window.innerHeight * ratio;
+                trail.style.width = `${window.innerWidth}px`;
+                trail.style.height = `${window.innerHeight}px`;
+                context.setTransform(ratio, 0, 0, ratio, 0, 0);
+            }
+
+            function drawTrail() {
+                context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+                if (points.length > 1) {
+                    context.setLineDash([5, 8]);
+                    context.lineWidth = 1.5;
+                    context.lineCap = 'round';
+                    context.lineDashOffset = -performance.now() / 38;
+                    for (let i = 1; i < points.length; i++) {
+                        context.beginPath();
+                        context.moveTo(points[i - 1].x, points[i - 1].y);
+                        context.lineTo(points[i].x, points[i].y);
+                        const trailColor = document.body.classList.contains('plane-over-action')
+                            ? '181, 234, 215'
+                            : document.documentElement.classList.contains('dark') ? '255, 229, 102' : '26, 26, 46';
+                        context.strokeStyle = `rgba(${trailColor}, ${0.04 + (i / points.length) * 0.22})`;
+                        context.stroke();
+                    }
+                }
+                plane.style.transform = `translate3d(${cursorX - 14}px, ${cursorY - 14}px, 0) rotate(${angle}deg) scale(${planeScale})`;
+                frameId = requestAnimationFrame(drawTrail);
+            }
+
+            document.addEventListener('pointermove', event => {
+                if (event.pointerType !== 'mouse') return;
+                cursorX = event.clientX;
+                cursorY = event.clientY;
+                const deltaX = cursorX - lastX;
+                const deltaY = cursorY - lastY;
+                if (Math.abs(deltaX) + Math.abs(deltaY) > 1) angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+                lastX = cursorX;
+                lastY = cursorY;
+                points.push({ x: cursorX, y: cursorY });
+                if (points.length > 15) points.shift();
+            }, { passive:true });
+
+            /* Event delegation: works for links/buttons rendered dynamically after page load (results, tools, links, thumbnails). */
+            document.addEventListener('pointerover', event => {
+                const target = event.target.closest('a, button, [onclick]');
+                if (!target || target.contains(event.relatedTarget)) return;
+                document.body.classList.add('plane-over-action');
+                plane.classList.add('is-over-action');
+                planeScale = 1.38;
+                if (target.matches('button, .nb-btn, .nb-btn-ghost')) target.classList.add('plane-target');
+            });
+            document.addEventListener('pointerout', event => {
+                const target = event.target.closest('a, button, [onclick]');
+                if (!target || target.contains(event.relatedTarget)) return;
+                document.body.classList.remove('plane-over-action');
+                plane.classList.remove('is-over-action');
+                planeScale = 1;
+                target.classList.remove('plane-target');
+            });
+
+            window.addEventListener('resize', resizeTrail, { passive:true });
+            resizeTrail();
+            document.body.classList.add('paper-plane-cursor-ready');
+            frameId = requestAnimationFrame(drawTrail);
+            window.addEventListener('pagehide', () => cancelAnimationFrame(frameId), { once:true });
+        }
     </script>
+    <!-- ── الفوتر (Footer) ── -->
+    <footer class="bg-nb-cream dark:bg-nb-ink border-t-4 border-nb-ink dark:border-nb-yellow py-8 mt-16 transition-colors duration-300 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 text-center flex flex-col items-center gap-4">
+            <a href="index.html" class="font-black text-2xl tracking-tight text-nb-ink dark:text-nb-yellow">
+                <span style="text-decoration: underline; text-decoration-color: #FFE566; text-underline-offset: 6px; text-decoration-thickness: 4px;">زين.</span>
+            </a>
+            <p class="text-sm font-bold text-nb-ink/60 dark:text-nb-cream/60">
+                © 2026 زين الدين ماجد. جميع الحقوق محفوظة.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ── زر التواصل العائم الثابت (Floating Action Button) ── -->
+    <a href="index.html#contact" class="fixed bottom-6 left-6 md:bottom-8 md:left-8 z-[90] nb-btn bg-nb-yellow text-nb-ink flex items-center gap-2 px-6 py-3.5 rounded-full text-sm sm:text-base transition-transform hover:-translate-y-1">
+        <span class="font-black">تواصل معي</span>
+        <svg class="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+    </a>
 </body>
 </html>
