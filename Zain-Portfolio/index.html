@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="زين الدين ماجد - تسويق تقني، صناعة فيديو إعلاني، هندسة تحكم وأنظمة، وأتمتة بالذكاء الاصطناعي.">
+    <meta property="og:title" content="زين الدين ماجد | خبير تسويق تقني وصانع وسائط">
+    <meta property="og:description" content="أعمال وخبرات زين الدين ماجد في التسويق التقني، الفيديو الإعلاني، والهندسة والتحكم.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/og-cover.jpg">
+    <meta property="og:locale" content="ar_AR">
+    <link rel="icon" href="favicon.ico">
+    <title>زين الدين ماجد | خبير تسويق تقني وصانع وسائط</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'nb-yellow':   '#FFE566',
+                        'nb-peach':    '#FFB4A2',
+                        'nb-mint':     '#B5EAD7',
+                        'nb-lavender': '#C7B8EA',
+                        'nb-sky':      '#A8D8EA',
+                        'nb-ink':      '#1A1A2E',
+                        'nb-ink2':     '#16213E',
+                        'nb-cream':    '#FFFBF0',
+                        'nb-card':     '#F5F0E8',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ── Orbit Animation ── */
+        .orbit-container {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 0; height: 0;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .field-card-wrapper:hover .orbit-container {
+            opacity: 1;
+        }
+
+        .floating-shape {
+            position: absolute;
+            top: -25px; left: -25px;
+            width: 50px; height: 50px;
+            background: #FFFBF0;
+            border: 2px solid #1A1A2E;
+            border-radius: 50%;
+            box-shadow: 2px 2px 0 #1A1A2E;
+            transform: translateX(0) scale(0.5);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .dark .floating-shape {
+            background: #16213E; 
+            border-color: #FFE566; 
+            box-shadow: 2px 2px 0 #FFE566;
+        }
+
+        .field-card-wrapper:hover .floating-shape {
+            transform: translateX(var(--orbit-dist, 160px)) scale(1.2);
+        }
+
+        @keyframes spinOrbit {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes spinReverse {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+
+        .shape-inner {
+            display: inline-block;
+            font-size: 24px;
+            animation: floatWobble 3s ease-in-out infinite;
+        }
+
+        @keyframes floatWobble {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-4px) rotate(10deg); }
+            66% { transform: translateY(4px) rotate(-8deg); }
+        }
+
+        /* ── المتغيرات والتنسيقات الأساسية ── */
+        :root {
+            --nb-shadow-sm:  3px 3px 0 #1A1A2E;
+            --nb-shadow-md:  5px 5px 0 #1A1A2E;
+            --nb-shadow-lg:  8px 8px 0 #1A1A2E;
+            --nb-shadow-xl: 12px 12px 0 #1A1A2E;
+            --nb-ink: #1A1A2E;
+            --nb-yellow: #FFE566;
+        }
+        .dark {
+            --nb-shadow-sm:  3px 3px 0 #090D1C;
+            --nb-shadow-md:  5px 5px 0 #090D1C;
+            --nb-shadow-lg:  8px 8px 0 #090D1C;
+            --nb-shadow-xl: 12px 12px 0 #090D1C;
+        }
+
+        /* Dark mode keeps the same colorful personality, in deeper tones. */
+        html.dark body { background:#10182C; }
+        html.dark #hero { background-color:#15213A; background-image:radial-gradient(circle at 84% 18%,rgba(255,229,102,.12),transparent 24%),radial-gradient(circle at 14% 78%,rgba(181,234,215,.12),transparent 25%),repeating-linear-gradient(-45deg,transparent,transparent 10px,rgba(255,255,255,.025) 10px,rgba(255,255,255,.025) 11px); }
+        html.dark #hero > div[aria-hidden] { opacity:.48 !important; }
+        html.dark #portfolio { background:#111D35 !important; }
+        html.dark #about { background:#161E35 !important; }
+        html.dark #contact { background:#1B2948 !important; }
+        html.dark .nb-card { border-color:#667493; }
+        html.dark #about .nb-stat { border-color:#7B89A8; }
+        html.dark #about .nb-stat.bg-nb-yellow { background:#4D431C !important; }
+        html.dark #about .nb-stat.bg-nb-mint { background:#183E39 !important; }
+        html.dark #about .nb-stat.bg-nb-peach { background:#4B302E !important; }
+        html.dark #about .nb-stat.bg-nb-lavender { background:#342D55 !important; }
+        html.dark .portfolio-card { border-color:#667493; background:#1A2946 !important; }
+        html.dark .skill-tag { background:#1B3F3A; border-color:#6FCAB7; box-shadow:2px 2px 0 #090D1C; }
+        html.dark .nb-btn { box-shadow:5px 5px 0 #FFE566; }
+        html.dark .nb-btn:hover { box-shadow:8px 8px 0 #FFE566; }
+        html.dark .nb-btn-ghost { box-shadow:3px 3px 0 #FFE566; }
+        html.dark .nb-btn-ghost:hover { box-shadow:5px 5px 0 #FFE566; }
+        html.dark button { box-shadow:3px 3px 0 #FFE566 !important; }
+
+        body { font-family: 'Noto Sans Arabic', sans-serif; overflow-x: hidden; }
+        * { word-wrap: break-word; }
+        h1,h2,h3,h4,h5,h6,p,span { overflow-wrap: break-word; }
+        img { max-width: 100%; }
+
+        /* Typewriter */
+        .typewriter-cursor {
+            display: inline-block; width: 3px; height: 1em;
+            background: #FFE566; margin-right: 2px;
+            vertical-align: middle; animation: blink 0.8s step-end infinite;
+        }
+        .dark .typewriter-cursor { background: #FFE566; }
+        .light .typewriter-cursor { background: #1A1A2E; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+        #typewriter-text {
+            display: block; white-space: normal; line-height: 1.3;
+            word-break: break-word; min-height: 2.5em; padding-top: 0.15em;
+        }
+        @media(max-width:640px){ #typewriter-text{ font-size:0.9em; } }
+
+        /* Neobrutalism */
+        .nb-card {
+            border: 3px solid #1A1A2E;
+            box-shadow: var(--nb-shadow-md);
+            border-radius: 14px;
+            transition: box-shadow 0.15s ease, transform 0.15s ease;
+        }
+        .nb-card:hover {
+            box-shadow: var(--nb-shadow-xl);
+            transform: translate(-3px, -3px);
+        }
+
+        .nb-badge {
+            border: 2px solid #1A1A2E;
+            box-shadow: 2px 2px 0 #1A1A2E;
+            font-weight: 900;
+        }
+        .dark .nb-badge { border-color: #FFE566; box-shadow: 2px 2px 0 #FFE566; }
+
+        .nb-btn {
+            border: 3px solid #1A1A2E;
+            box-shadow: var(--nb-shadow-md);
+            font-weight: 900;
+            transition: box-shadow 0.12s, transform 0.12s;
+        }
+        .nb-btn:hover { box-shadow: var(--nb-shadow-lg); transform: translate(-2px,-2px); }
+        .nb-btn:active { box-shadow: 1px 1px 0 #1A1A2E; transform: translate(2px,2px); }
+
+        .nb-btn-ghost {
+            border: 3px solid #1A1A2E;
+            box-shadow: var(--nb-shadow-sm);
+            font-weight: 800;
+            transition: box-shadow 0.12s, transform 0.12s;
+        }
+        .nb-btn-ghost:hover { box-shadow: var(--nb-shadow-md); transform: translate(-2px,-2px); }
+
+        .skill-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 5px 14px; border-radius: 100px; font-size: 0.8rem;
+            font-weight: 800;
+            border: 2px solid #1A1A2E;
+            box-shadow: 2px 2px 0 #1A1A2E;
+            background: #B5EAD7; color: #1A1A2E;
+            transition: transform 0.12s, box-shadow 0.12s;
+        }
+        .dark .skill-tag {
+            background: #1A1A2E; color: #FFE566;
+            border-color: #FFE566; box-shadow: 2px 2px 0 #FFE566;
+        }
+        .skill-tag:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 #1A1A2E; }
+        .dark .skill-tag:hover { box-shadow: 3px 3px 0 #FFE566; }
+
+        .reveal { opacity:0; transform:translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+
+        @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+        .fade-up{opacity:0;animation:fadeUp 0.6s ease forwards;}
+        .fade-up-1{animation-delay:0.1s}.fade-up-2{animation-delay:0.25s}
+        .fade-up-3{animation-delay:0.4s}.fade-up-4{animation-delay:0.55s}
+
+        .timeline-node .node-circle { transition: transform 0.3s ease, filter 0.3s ease; }
+        .timeline-node.active .node-circle { transform: scale(1.25); }
+        .timeline-node:not(.active) .node-circle { filter: grayscale(60%) opacity(0.6); }
+        .timeline-node .node-circle::after {
+            content:""; position:absolute; inset:-7px; border:2px solid #FFE566; border-radius:999px;
+            opacity:0; pointer-events:none;
+        }
+        .timeline-node.just-activated .node-circle::after { animation:nodePulse 0.8s ease-out both; }
+        @keyframes nodePulse { 0%{transform:scale(.55);opacity:.9} 100%{transform:scale(1.8);opacity:0} }
+        .timeline-title-icon { display:inline-block; animation:floatWobble 3s ease-in-out infinite; }
+        .timeline-node:nth-child(even) .timeline-title-icon { animation-delay:-1.35s; }
+        .live-dot { width:8px; height:8px; display:inline-block; margin-left:6px; border-radius:999px; background:#30C96B; box-shadow:0 0 0 0 rgba(48,201,107,.65); animation:livePulse 1.8s ease-out infinite; }
+        @keyframes livePulse { 70%{box-shadow:0 0 0 7px rgba(48,201,107,0)} 100%{box-shadow:0 0 0 0 rgba(48,201,107,0)} }
+
+        .portfolio-card {
+            border: 3px solid #1A1A2E;
+            box-shadow: var(--nb-shadow-md);
+            transition: box-shadow 0.15s, transform 0.15s;
+            border-radius: 16px;
+        }
+        .portfolio-card:hover {
+            box-shadow: var(--nb-shadow-xl);
+            transform: translate(-4px,-4px);
+        }
+
+        .social-btn { width:46px;height:46px;display:flex;align-items:center;justify-content:center;position:relative;border-radius:10px;cursor:pointer;z-index:1; }
+        .social-btn .svgContainer {
+            width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+            border-radius:10px;transition:all 0.15s;
+            border:2px solid #1A1A2E; box-shadow:2px 2px 0 #1A1A2E; z-index:2; background:transparent;
+        }
+        .dark .social-btn .svgContainer { border-color:#FFE566; box-shadow:2px 2px 0 #FFE566; }
+        .social-btn .BG { position:absolute;width:100%;height:100%;z-index:-1;border-radius:10px;pointer-events:none;transition:all 0.3s; }
+        .social-btn:hover .svgContainer { box-shadow:4px 4px 0 #1A1A2E; transform:translate(-1px,-1px); }
+        .dark .social-btn:hover .svgContainer { box-shadow:4px 4px 0 #FFE566; }
+
+        #mobile-menu{max-height:0;overflow:hidden;transition:max-height 0.35s ease,opacity 0.3s ease;opacity:0;}
+        #mobile-menu.open{max-height:500px;opacity:1;}
+
+        h2{line-height:1.2!important;}
+        @media(max-width:640px){ h1{font-size:2.8rem!important;} h2{font-size:2.2rem!important;} }
+
+        .nb-stripe {
+            background-image: repeating-linear-gradient(
+                -45deg, transparent, transparent 10px,
+                rgba(26,26,46,0.035) 10px, rgba(26,26,46,0.035) 11px
+            );
+        }
+        .dark .nb-stripe {
+            background-image: repeating-linear-gradient(
+                -45deg, transparent, transparent 10px,
+                rgba(255,229,102,0.04) 10px, rgba(255,229,102,0.04) 11px
+            );
+        }
+
+        .nb-ul {
+            text-decoration: underline;
+            text-decoration-color: #FFE566;
+            text-underline-offset: 6px;
+            text-decoration-thickness: 4px;
+        }
+        .dark .nb-ul { text-decoration-color: #FFE566; }
+
+        .nb-stat {
+            border: 3px solid #1A1A2E;
+            box-shadow: var(--nb-shadow-sm);
+            border-radius: 14px;
+            transition: box-shadow 0.15s, transform 0.15s;
+        }
+        .nb-stat:hover { box-shadow: var(--nb-shadow-md); transform:translate(-2px,-2px); }
+        #about .nb-stat { opacity:0; transform:translateY(18px) scale(.98); transition:opacity .5s ease, transform .5s ease, box-shadow .15s ease; }
+        #about.about-visible .nb-stat { opacity:1; transform:translateY(0) scale(1); }
+        #about.about-visible .nb-stat:nth-child(1) { transition-delay:0ms; }
+        #about.about-visible .nb-stat:nth-child(2) { transition-delay:100ms; }
+        #about.about-visible .nb-stat:nth-child(3) { transition-delay:200ms; }
+        #about.about-visible .nb-stat:nth-child(4) { transition-delay:300ms; }
+        #about .about-stats-grid { perspective:900px; }
+        #about .nb-stat { position:relative; overflow:hidden; transform-style:preserve-3d; }
+        #about .nb-stat::after { content:""; position:absolute; inset:-40% -60%; background:linear-gradient(105deg,transparent 44%,rgba(255,255,255,.48) 50%,transparent 56%); transform:translateX(-75%) rotate(7deg); pointer-events:none; }
+        #about.about-visible .nb-stat::after { animation:statSweep 5.6s ease-in-out infinite; }
+        #about.about-visible .nb-stat:nth-child(2)::after { animation-delay:1.05s; }
+        #about.about-visible .nb-stat:nth-child(3)::after { animation-delay:2.1s; }
+        #about.about-visible .nb-stat:nth-child(4)::after { animation-delay:3.15s; }
+        #about.about-visible .nb-stat:hover { transform:translate(-3px,-3px) scale(1.025) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)); box-shadow:var(--nb-shadow-md); transition-delay:0s; }
+        @keyframes statSweep { 0%,62%,100%{transform:translateX(-75%) rotate(7deg)} 78%{transform:translateX(75%) rotate(7deg)} }
+        .about-live-status { display:inline-flex; align-items:center; gap:8px; margin-top:18px; padding:7px 11px; border:2px solid #1A1A2E; border-radius:999px; background:#B5EAD7; box-shadow:3px 3px 0 #1A1A2E; color:#1A1A2E; font-size:.72rem; font-weight:900; }
+        .about-live-status-dot { width:8px; height:8px; flex:none; border-radius:999px; background:#30C96B; box-shadow:0 0 0 0 rgba(48,201,107,.7); animation:livePulse 1.8s ease-out infinite; }
+        .dark .about-live-status { border-color:#FFE566; box-shadow:3px 3px 0 #FFE566; background:#1A1A2E; color:#FFE566; }
+        #about .nb-ul { text-decoration:none; position:relative; display:inline-block; }
+        #about .nb-ul::after { content:""; position:absolute; right:0; bottom:-6px; width:100%; height:4px; background:#FFE566; transform:scaleX(0); transform-origin:right; transition:transform .7s cubic-bezier(.2,.9,.2,1) .2s; }
+        #about.about-visible .nb-ul::after { transform:scaleX(1); }
+        @media (prefers-reduced-motion: reduce) { #about .nb-stat { opacity:1; transform:none; } #about .nb-ul::after { transform:scaleX(1); } .timeline-title-icon,.live-dot,.about-live-status-dot { animation:none; } #about .nb-stat::after { animation:none !important; } }
+
+        .nb-divider { border-top: 3px solid #1A1A2E; }
+        .dark .nb-divider { border-top-color: #FFE566; }
+
+        .nb-nav { border-bottom: 3px solid #1A1A2E; }
+        .dark .nb-nav { border-bottom-color: #FFE566; }
+
+        /* Paper-plane cursor: enabled only by the script on mouse devices. */
+        #paper-plane-trail, #paper-plane-cursor { position:fixed; pointer-events:none; opacity:0; transition:opacity .2s ease; }
+        #paper-plane-trail { inset:0; z-index:9997; }
+        #paper-plane-cursor { top:0; left:0; width:28px; height:28px; z-index:9998; transform-origin:center; }
+        #paper-plane-cursor svg { display:block; width:100%; height:100%; filter:drop-shadow(2px 2px 0 rgba(26,26,46,.18)); }
+        #paper-plane-cursor.is-over-action svg { animation:planeFlap .45s ease-in-out infinite alternate; filter:drop-shadow(2px 3px 0 rgba(26,26,46,.25)); }
+        #paper-plane-cursor.is-over-action path:first-child { fill:#B5EAD7; }
+        .plane-target { box-shadow:0 0 0 4px rgba(181,234,215,.6), var(--nb-shadow-md) !important; }
+        html.dark .plane-target { box-shadow:0 0 0 4px rgba(181,234,215,.55), 5px 5px 0 #FFE566 !important; }
+        @keyframes planeFlap { from{transform:rotate(-10deg) translateY(0)} to{transform:rotate(10deg) translateY(-3px)} }
+
+        /* Hero portrait: transparent image framed by a neo-brutalist halo. */
+        .hero-portrait-stage { width:18rem; height:20rem; position:relative; isolation:isolate; }
+        .hero-halo-square { position:absolute; inset:14% 7% 8% 11%; background:#FFE566; border:3px solid #1A1A2E; border-radius:28px; box-shadow:10px 10px 0 #1A1A2E; transform:rotate(6deg); }
+        .hero-halo-circle { position:absolute; width:66%; aspect-ratio:1; top:2%; right:1%; border:3px solid #1A1A2E; border-radius:999px; background:#B5EAD7; z-index:-1; animation:heroHaloDrift 5s ease-in-out infinite; }
+        .hero-halo-dots { position:absolute; left:3%; bottom:13%; width:68px; height:68px; background-image:radial-gradient(#1A1A2E 2px, transparent 2.5px); background-size:13px 13px; transform:rotate(-12deg); }
+        .hero-portrait-image { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:bottom; z-index:1; filter:drop-shadow(10px 12px 0 rgba(26,26,46,.28)); transition:opacity .38s ease, transform .38s cubic-bezier(.2,.8,.2,1); }
+        .hero-portrait-image--base { animation:heroPortraitFloat 4.5s ease-in-out infinite; }
+        .hero-portrait-image--alt { opacity:0; transform:translateY(10px) scale(.97); }
+        .hero-orbit-label { position:absolute; z-index:2; padding:5px 10px; border:2px solid #1A1A2E; border-radius:999px; box-shadow:3px 3px 0 #1A1A2E; background:#FFB5A7; color:#1A1A2E; font-size:.7rem; font-weight:900; animation:heroLabelBob 3.2s ease-in-out infinite; }
+        .hero-orbit-label.label-b2b { top:16%; left:-8%; }
+        .hero-orbit-label.label-roi { bottom:11%; right:-7%; background:#B5EAD7; animation-delay:-1.4s; }
+        .hero-mode-label { position:absolute; top:4%; right:-9%; z-index:3; padding:5px 10px; border:2px solid #1A1A2E; border-radius:999px; box-shadow:3px 3px 0 #1A1A2E; background:#FFE566; color:#1A1A2E; font-size:.68rem; font-weight:900; opacity:0; transform:translateY(7px) rotate(4deg); transition:opacity .25s ease, transform .25s ease; }
+        @media (hover:hover) and (pointer:fine) {
+            .hero-portrait-stage:hover .hero-portrait-image--base { opacity:0; }
+            .hero-portrait-stage:hover .hero-portrait-image--alt { opacity:1; transform:translateY(0) scale(1); }
+            .hero-portrait-stage:hover .hero-mode-label { opacity:1; transform:translateY(0) rotate(4deg); }
+        }
+        @keyframes heroPortraitFloat { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-9px) rotate(-1deg)} }
+        @keyframes heroHaloDrift { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-8px,8px) scale(1.04)} }
+        @keyframes heroLabelBob { 0%,100%{transform:translateY(0) rotate(-3deg)} 50%{transform:translateY(-6px) rotate(2deg)} }
+        .dark .hero-halo-square { border-color:#FFE566; box-shadow:10px 10px 0 #FFE566; }
+        .dark .hero-halo-circle { border-color:#FFE566; }
+        @media (min-width:640px) { .hero-portrait-stage { width:25rem; height:27rem; } }
+        @media (prefers-reduced-motion:reduce) { .hero-halo-circle,.hero-portrait-image,.hero-orbit-label { animation:none; } }
+        .paper-plane-cursor-ready #paper-plane-trail, .paper-plane-cursor-ready #paper-plane-cursor { opacity:1; }
+        @media (pointer:fine) and (prefers-reduced-motion:no-preference) {
+            .paper-plane-cursor-ready, .paper-plane-cursor-ready * { cursor:none !important; }
+        }
+    </style>
+</head>
+
+<body class="bg-nb-cream text-nb-ink dark:bg-nb-ink dark:text-nb-cream antialiased transition-colors duration-300">
+    <canvas id="paper-plane-trail" aria-hidden="true"></canvas>
+    <div id="paper-plane-cursor" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.5 3.5 21.5 11.6l-8.3 2.2-3.1 6.7L2.5 3.5Z" fill="#FFE566" stroke="#1A1A2E" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="m13.2 13.8-3.1 6.7.2-8.9" stroke="#1A1A2E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+
+    <!-- ── NAV ── -->
+    <nav class="nb-nav bg-nb-cream/98 dark:bg-nb-ink2/95 backdrop-blur-sm sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="#" class="font-black text-2xl tracking-tight text-nb-ink dark:text-nb-yellow">
+                    <span class="nb-ul">زين.</span>
+                </a>
+                <div class="hidden md:flex gap-8 items-center">
+                    <a href="#" class="text-nb-ink dark:text-nb-cream hover:text-nb-ink dark:hover:text-nb-yellow transition font-bold text-sm">الرئيسية</a>
+                    <a href="#about" class="text-nb-ink dark:text-nb-cream hover:text-nb-ink dark:hover:text-nb-yellow transition font-bold text-sm">نبذة عني</a>
+                    <a href="#portfolio" class="text-nb-ink dark:text-nb-cream hover:text-nb-ink dark:hover:text-nb-yellow transition font-bold text-sm">أعمالي</a>
+                    <a href="#contact" class="text-nb-ink dark:text-nb-cream hover:text-nb-ink dark:hover:text-nb-yellow transition font-bold text-sm">تواصل معي</a>
+                    <a href="en/index.html" class="px-3 py-1 bg-nb-mint text-nb-ink rounded-md font-black text-sm nb-btn-ghost">English</a>
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-nb-yellow dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow" style="border:2px solid #1A1A2E;box-shadow:2px 2px 0 #1A1A2E" aria-label="Toggle theme">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-nb-yellow dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow" style="border:2px solid #1A1A2E;box-shadow:2px 2px 0 #1A1A2E" aria-label="Menu">
+                    <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <svg id="close-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden bg-nb-cream dark:bg-nb-ink2" style="border-top:3px solid #1A1A2E">
+            <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-2">
+                <a href="#" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition">الرئيسية</a>
+                <a href="#about" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition">نبذة عني</a>
+                <a href="#portfolio" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition">أعمالي</a>
+                <a href="#contact" class="py-2 px-3 rounded-lg text-nb-ink dark:text-nb-cream hover:bg-nb-yellow dark:hover:bg-nb-ink font-bold transition">تواصل معي</a>
+                <div class="flex items-center gap-3 pt-2" style="border-top:2px solid rgba(26,26,46,0.2)">
+                    <a href="en/index.html" class="px-3 py-1 bg-nb-mint text-nb-ink rounded-md font-black text-sm nb-badge">English</a>
+                    <button id="mobile-theme-toggle" class="p-2 rounded-lg bg-nb-yellow dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow nb-badge" aria-label="Toggle theme">
+                        <svg class="theme-dark-icon w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg class="theme-light-icon hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <section id="hero" class="relative pt-24 pb-32 overflow-hidden nb-stripe">
+        <!-- Decorative circles -->
+        <div aria-hidden="true" class="absolute top-12 right-8 w-36 h-36 rounded-full bg-nb-yellow opacity-40 dark:opacity-25 pointer-events-none" style="border:3px solid #1A1A2E;box-shadow:6px 6px 0 #1A1A2E"></div>
+        <div aria-hidden="true" class="absolute bottom-12 left-8 w-24 h-24 rounded-full bg-nb-mint opacity-50 dark:opacity-20 pointer-events-none" style="border:3px solid #1A1A2E;box-shadow:5px 5px 0 #1A1A2E"></div>
+        <div aria-hidden="true" class="absolute top-1/2 left-1/4 w-16 h-16 rounded-full bg-nb-peach opacity-30 dark:opacity-10 pointer-events-none" style="border:2px solid #1A1A2E"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+
+                <div class="md:w-1/2 text-center md:text-right">
+                    <div class="inline-flex items-center gap-2 mb-6 fade-up fade-up-1">
+                        <span class="nb-badge px-3 py-1.5 rounded-full text-xs bg-nb-mint dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow">
+                            <span class="relative flex h-2 w-2 inline-block ml-1" style="vertical-align:middle">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                            </span>
+                            متاح للتسويق التقني والتعاقد المؤسسي
+                        </span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.15] mb-6 text-nb-ink dark:text-nb-cream fade-up fade-up-2 tracking-tight">
+                        أنا<br>
+                        <span class="flex flex-col items-center md:items-start h-[180px] sm:h-[150px] lg:h-[170px] mt-1">
+                            <span id="typewriter-text" class="text-nb-ink dark:text-nb-yellow nb-ul"></span>
+                            <span class="typewriter-cursor"></span>
+                        </span>
+                    </h1>
+
+                    <p class="text-base text-nb-ink/65 dark:text-nb-cream/65 mb-8 leading-relaxed max-w-md mx-auto md:mx-0 fade-up fade-up-3">
+                        بحوّل المنتجات التقنية المعقدة لإعلانات وفيديوهات بتبيع فعلاً وترفع الـ ROI بشكل ملموس.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4 fade-up fade-up-4">
+                        <a href="#portfolio" class="nb-btn bg-nb-yellow text-nb-ink px-8 py-4 rounded-xl text-center font-black">
+                            شاهد أعمالي
+                        </a>
+                        <a href="#contact" class="nb-btn-ghost bg-nb-cream dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow px-8 py-4 rounded-xl text-center font-bold">
+                            تواصل معي
+                        </a>
+                    </div>
+
+                    <div class="mt-8 flex flex-wrap justify-center md:justify-start gap-2 fade-up fade-up-4">
+                        <span class="skill-tag">⚙️ هندسة أنظمة وتحكم</span>
+                        <span class="skill-tag">🎬 مونتاج إعلاني بيعي</span>
+                        <span class="skill-tag">📊 ميديا باينج B2B</span>
+                        <span class="skill-tag">🤖 أتمتة الذكاء الاصطناعي</span>
+                    </div>
+                </div>
+
+                <!-- Transparent portrait with neo-brutalist halo -->
+                <div class="md:w-1/2 flex justify-center md:justify-end fade-up fade-up-2">
+                    <div class="hero-portrait-stage">
+                        <div class="hero-halo-square" aria-hidden="true"></div>
+                        <div class="hero-halo-circle" aria-hidden="true"></div>
+                        <div class="hero-halo-dots" aria-hidden="true"></div>
+                        <span class="hero-orbit-label label-b2b" aria-hidden="true">B2B</span>
+                        <span class="hero-orbit-label label-roi" aria-hidden="true">ROI ↗</span>
+                        <span class="hero-mode-label" aria-hidden="true">Campaign mode</span>
+                        <img src="profile-removebg-preview.png" alt="Zain Eldeen Majed" class="hero-portrait-image hero-portrait-image--base">
+                        <img src="2943498c-44df-4453-8029-3f6c1533c257-removebg-preview.png" alt="Zain Eldeen Majed wearing sunglasses" class="hero-portrait-image hero-portrait-image--alt">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── PORTFOLIO ── -->
+    <section id="portfolio" class="py-24 bg-nb-card dark:bg-nb-ink2 transition-colors duration-300 nb-divider">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="inline-block nb-badge px-4 py-1.5 text-xs rounded-full bg-nb-peach dark:bg-nb-ink text-nb-ink dark:text-nb-yellow mb-4">ماذا أقدم؟</span>
+                <h2 class="text-3xl md:text-5xl font-black text-nb-ink dark:text-nb-cream mb-4">أعمالي وتخصصاتي</h2>
+                <p class="text-base text-nb-ink/60 dark:text-nb-cream/60">اختر المجال الذي تود استكشافه</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
+                <!-- Card 1 -->
+                <div class="field-card-wrapper relative h-full" data-icons="📢,📈,💡,🎯">
+                    <a href="marketing.html" class="portfolio-card group relative z-10 w-full h-full bg-nb-cream dark:bg-nb-ink p-8 block overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-2.5 bg-nb-peach"></div>
+                        <div class="w-14 h-14 bg-nb-peach rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-2xl" style="border:2px solid #1A1A2E;box-shadow:3px 3px 0 #1A1A2E">📱</div>
+                        <h3 class="text-xl font-black text-nb-ink dark:text-nb-cream mb-3" style="min-height:4.5rem;line-height:1.5">التسويق التقني وإدارة الإعلانات</h3>
+                        <p class="text-sm text-nb-ink/65 dark:text-nb-cream/65 leading-relaxed mb-5">محتوى إعلاني وحملات ميديا باينج (Media Buying) مبنية على بيانات، لشركات السوفتوير والصناعة.</p>
+                        <span class="inline-flex items-center gap-1.5 text-xs font-black text-nb-ink dark:text-nb-yellow">
+                            عرض المشاريع <svg class="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7-7 7M3 12h18"></path></svg>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="field-card-wrapper relative h-full" data-icons="🎬,✂️,🌟,🎥">
+                    <a href="video.html" class="portfolio-card group relative z-10 w-full h-full bg-nb-cream dark:bg-nb-ink p-8 block overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-2.5 bg-nb-yellow"></div>
+                        <div class="w-14 h-14 bg-nb-yellow rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-2xl" style="border:2px solid #1A1A2E;box-shadow:3px 3px 0 #1A1A2E">🎬</div>
+                        <h3 class="text-xl font-black text-nb-ink dark:text-nb-cream mb-3" style="min-height:4.5rem;line-height:1.5">صناعة ومونتاج الفيديو الإعلاني</h3>
+                        <p class="text-sm text-nb-ink/65 dark:text-nb-cream/65 leading-relaxed mb-5">فيديوهات إعلانية بخطافات (Hooks) بصرية بتشد الانتباه من أول ثانية وتحوّل المشاهد لعميل.</p>
+                        <span class="inline-flex items-center gap-1.5 text-xs font-black text-nb-ink dark:text-nb-yellow">
+                            عرض المشاريع <svg class="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7-7 7M3 12h18"></path></svg>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="field-card-wrapper relative h-full" data-icons="💻,⚙️,🤖,🔌">
+                    <a href="engineering.html" class="portfolio-card group relative z-10 w-full h-full bg-nb-cream dark:bg-nb-ink p-8 block overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-2.5 bg-nb-mint"></div>
+                        <div class="w-14 h-14 bg-nb-mint rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-2xl" style="border:2px solid #1A1A2E;box-shadow:3px 3px 0 #1A1A2E">⚙️</div>
+                        <h3 class="text-xl font-black text-nb-ink dark:text-nb-cream mb-3" style="min-height:4.5rem;line-height:1.5">الهندسة والتحكم الصناعي</h3>
+                        <p class="text-sm text-nb-ink/65 dark:text-nb-cream/65 leading-relaxed mb-5">أنظمة تحكم صناعي مبنية بدقة من الأردوينو للـ PLC والـ Classic Control.</p>
+                        <span class="inline-flex items-center gap-1.5 text-xs font-black text-nb-ink dark:text-nb-yellow">
+                            عرض المشاريع <svg class="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7-7 7M3 12h18"></path></svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── ABOUT ── -->
+    <section id="about" class="py-24 bg-nb-cream dark:bg-nb-ink transition-colors duration-300 nb-divider">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20 reveal">
+                <div>
+                    <span class="inline-block nb-badge px-4 py-1.5 text-xs rounded-full bg-nb-lavender dark:bg-nb-ink2 text-nb-ink dark:text-nb-yellow mb-4">نبذة عني</span>
+                    <h2 class="text-3xl md:text-5xl font-black text-nb-ink dark:text-nb-cream mb-6 leading-tight">
+                        تفكير هندسي،<br>
+                        نتائج <span class="nb-ul">تجارية.</span>
+                    </h2>
+                    <p class="text-base text-nb-ink/70 dark:text-nb-cream/70 leading-relaxed">
+                        طالب هندسة إلكترونية بجامعة المنوفية (قسم التحكم والآلات الصناعية)، وباشتغل في التسويق والوسائط التقنية. بادمج التفكير الهندسي مع صناعة محتوى بيعي، لشركات البرمجيات والصناعة.
+                    </p>
+                    <div class="about-live-status" aria-label="منهجية تعمل على النتائج">
+                        <span class="about-live-status-dot" aria-hidden="true"></span>
+                        <span id="about-status-text">منهجية تعمل على النتائج</span>
+                    </div>
+                </div>
+
+                <div class="about-stats-grid grid grid-cols-2 gap-4">
+                    <div class="nb-stat bg-nb-yellow dark:bg-nb-ink2 p-6 text-center cursor-default">
+                        <span class="block text-3xl font-black text-nb-ink dark:text-nb-yellow mb-1">مستقل متفوق</span>
+                        <span class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 uppercase tracking-wider">على منصة Upwork الدولية</span>
+                    </div>
+                    <div class="nb-stat bg-nb-mint dark:bg-nb-ink2 p-6 text-center cursor-default">
+                        <span class="block text-3xl font-black text-nb-ink dark:text-nb-yellow mb-1">تخصص B2B</span>
+                        <span class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 uppercase tracking-wider">البرمجيات والصناعات الثقيلة</span>
+                    </div>
+                    <div class="nb-stat bg-nb-peach dark:bg-nb-ink2 p-6 text-center cursor-default">
+                        <span class="block text-3xl font-black text-nb-ink dark:text-nb-yellow mb-1"><span class="count-up" data-count="3" data-prefix="+">0</span> عملاء</span>
+                        <span class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 uppercase tracking-wider">دوليون ناجحون</span>
+                    </div>
+                    <div class="nb-stat bg-nb-lavender dark:bg-nb-ink2 p-6 text-center cursor-default col-span-2">
+                        <span class="block text-4xl font-black text-nb-ink dark:text-nb-yellow mb-1"><span class="count-up" data-count="2027" data-start="2004">2004</span></span>
+                        <span class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 uppercase tracking-wider">سنة التخرج · كلية الهندسة الإلكترونية بجامعة المنوفية</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Vertical Timeline ── -->
+            <div class="mt-32">
+                <div class="text-center md:text-right mb-14 reveal">
+                    <span class="inline-block nb-badge px-4 py-1.5 text-xs rounded-full bg-nb-yellow text-nb-ink mb-4">المسار</span>
+                    <h3 class="text-3xl md:text-4xl font-black text-nb-ink dark:text-nb-cream">رحلتي</h3>
+                </div>
+
+                <div class="relative" id="timeline-container">
+                    <!-- الخط الرأسي الخلفي -->
+                    <div class="absolute right-[11px] sm:right-[15px] top-4 bottom-4 w-1 bg-nb-ink/15 dark:bg-nb-cream/15 rounded-full z-0"></div>
+                    <!-- خط التقدم (يمتلئ مع السكرول) -->
+                    <div id="timeline-progress" class="absolute right-[11px] sm:right-[15px] top-4 w-1 bg-nb-yellow rounded-full z-0 transition-all duration-700 ease-out" style="height:0%; border-left:1px solid #1A1A2E; border-right:1px solid #1A1A2E;"></div>
+
+                    <div class="space-y-10" id="timeline-nodes">
+                        <!-- Node 1 -->
+                        <div class="timeline-node relative pr-10 sm:pr-16 reveal" data-index="0">
+                            <div class="node-circle absolute right-0 sm:right-[4px] top-6 w-6 h-6 rounded-full bg-nb-yellow z-10" style="border:3px solid #1A1A2E; box-shadow:2px 2px 0 #1A1A2E"></div>
+                            <div class="nb-card bg-nb-card dark:bg-nb-ink2 p-6 sm:p-8">
+                                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4">
+                                    <h4 class="text-lg sm:text-xl font-black text-nb-ink dark:text-nb-cream"><span class="timeline-title-icon">🎓</span> الالتحاق بكلية الهندسة الإلكترونية</h4>
+                                    <span class="px-3 py-1 bg-nb-peach dark:bg-nb-ink text-nb-ink dark:text-nb-yellow rounded-full text-xs font-black nb-badge shrink-0">أواخر 2022</span>
+                                </div>
+                                <div class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 mb-3 uppercase tracking-wider">جامعة المنوفية · قسم التحكم والآلات الصناعية</div>
+                                <p class="text-nb-ink/75 dark:text-nb-cream/75 leading-relaxed text-sm">بدأت أفكر بمنطق هندسي — تحليل المشكلة قبل الحل، مش بعده.</p>
+                            </div>
+                        </div>
+
+                        <!-- Node 2 -->
+                        <div class="timeline-node relative pr-10 sm:pr-16 reveal" data-index="1">
+                            <div class="node-circle absolute right-0 sm:right-[4px] top-6 w-6 h-6 rounded-full bg-nb-mint z-10" style="border:3px solid #1A1A2E; box-shadow:2px 2px 0 #1A1A2E"></div>
+                            <div class="nb-card bg-nb-card dark:bg-nb-ink2 p-6 sm:p-8">
+                                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4">
+                                    <h4 class="text-lg sm:text-xl font-black text-nb-ink dark:text-nb-cream"><span class="timeline-title-icon">🤝</span> إطلاق العمل الحر وتأسيس خط إمداد تجاري</h4>
+                                    <span class="px-3 py-1 bg-nb-mint dark:bg-nb-ink text-nb-ink dark:text-nb-yellow rounded-full text-xs font-black nb-badge shrink-0">أوائل 2023</span>
+                                </div>
+                                <div class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 mb-3 uppercase tracking-wider">منصة Upwork العالمية · أعمال حرة مستقلة</div>
+                                <p class="text-nb-ink/75 dark:text-nb-cream/75 leading-relaxed text-sm">بدأت العمل الحر كمحرر فيديو على Upwork. بالتوازي، شغّلت مشروع تجاري بسيط: جمع كراتين وبيعها للمصانع.</p>
+                            </div>
+                        </div>
+
+                        <!-- Node 3 -->
+                        <div class="timeline-node relative pr-10 sm:pr-16 reveal" data-index="2">
+                            <div class="node-circle absolute right-0 sm:right-[4px] top-6 w-6 h-6 rounded-full bg-nb-lavender z-10" style="border:3px solid #1A1A2E; box-shadow:2px 2px 0 #1A1A2E"></div>
+                            <div class="nb-card bg-nb-card dark:bg-nb-ink2 p-6 sm:p-8">
+                                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4">
+                                    <h4 class="text-lg sm:text-xl font-black text-nb-ink dark:text-nb-cream"><span class="timeline-title-icon">🎬</span> التعمق في الأتمتة والتحكم الصناعي</h4>
+                                    <span class="px-3 py-1 bg-nb-lavender dark:bg-nb-ink text-nb-ink dark:text-nb-yellow rounded-full text-xs font-black nb-badge shrink-0">2024</span>
+                                </div>
+                                <div class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 mb-3 uppercase tracking-wider">الدورات الهندسية المتقدمة</div>
+                                <p class="text-nb-ink/75 dark:text-nb-cream/75 leading-relaxed text-sm">اتعمقت في الأتمتة الصناعية — برمجة أردوينو، وتدريب متخصص في PLC والـ Classic Control.</p>
+                            </div>
+                        </div>
+
+                        <!-- Node 4 -->
+                        <div class="timeline-node relative pr-10 sm:pr-16 reveal" data-index="3">
+                            <div class="node-circle absolute right-0 sm:right-[4px] top-6 w-6 h-6 rounded-full bg-nb-sky z-10" style="border:3px solid #1A1A2E; box-shadow:2px 2px 0 #1A1A2E"></div>
+                            <div class="nb-card bg-nb-card dark:bg-nb-ink2 p-6 sm:p-8">
+                                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4">
+                                    <h4 class="text-lg sm:text-xl font-black text-nb-ink dark:text-nb-cream"><span class="timeline-title-icon">📊</span> التسويق التقني والاعتمادات الرقمية الكبرى</h4>
+                                    <span class="px-3 py-1 bg-nb-sky dark:bg-nb-ink text-nb-ink dark:text-nb-yellow rounded-full text-xs font-black nb-badge shrink-0">صيف 2025</span>
+                                </div>
+                                <div class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 mb-3 uppercase tracking-wider">منحة رواد مصر الرقمية (DEPI) · مبادرة ITIDA Gigs · مؤسسة The Insider</div>
+                                <p class="text-nb-ink/75 dark:text-nb-cream/75 leading-relaxed text-sm">تخرجت من تراك التسويق في DEPI وITIDA Gigs، وبالتوازي خلّصت دبلومة Maker (تصنيع رقمي)، مع 3 مشاريع فريلانس لعملاء دوليين و3 شهور كاتب محتوى في The Insider Menofia.</p>
+                            </div>
+                        </div>
+
+                        <!-- Node 5 -->
+                        <div class="timeline-node relative pr-10 sm:pr-16 reveal" data-index="4">
+                            <div class="node-circle absolute right-0 sm:right-[4px] top-6 w-6 h-6 rounded-full bg-nb-yellow z-10" style="border:3px solid #1A1A2E; box-shadow:2px 2px 0 #1A1A2E"></div>
+                            <div class="nb-card border-4 border-nb-yellow bg-nb-cream dark:bg-nb-ink p-6 sm:p-8" style="box-shadow: 8px 8px 0 #1A1A2E;">
+                                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4">
+                                    <h4 class="text-lg sm:text-xl font-black text-nb-ink dark:text-nb-cream"><span class="timeline-title-icon">🚀</span> القيادة التنفيذية وإعلانات الشركات الكبرى</h4>
+                                    <span class="px-3 py-1 bg-nb-yellow text-nb-ink rounded-full text-xs font-black nb-badge shrink-0">أوائل 2026 - اليوم <span class="live-dot" aria-label="مستمر الآن"></span></span>
+                                </div>
+                                <div class="text-xs font-bold text-nb-ink/60 dark:text-nb-cream/50 mb-3 uppercase tracking-wider">شركة Puresoft · شركة CRT · رئاسة النشاط الطلابي</div>
+                                <p class="text-nb-ink/75 dark:text-nb-cream/75 leading-relaxed text-sm">بقيت محرر فيديو رئيسي ومستشار تسويق في Puresoft، وبدير المحتوى والميديا باينج بالكامل في CRT. بالتوازي، بقود النشاط الطلابي بالكلية كرئيس.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section id="contact" class="py-24 bg-nb-yellow dark:bg-nb-ink2 transition-colors duration-300 nb-divider">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="inline-block nb-badge px-4 py-1.5 text-xs rounded-full bg-nb-cream text-nb-ink mb-4 reveal">لنعمل معاً</span>
+            <h2 class="text-3xl md:text-5xl font-black text-nb-ink dark:text-nb-cream mb-6 reveal">مستعد لبناء شيء استثنائي؟</h2>
+            <div class="flex flex-wrap justify-center gap-4 mb-14 reveal">
+                <a href="https://www.upwork.com/freelancers/~01d503ee7d17d3e651" target="_blank" class="nb-btn flex items-center gap-2.5 px-7 py-3 bg-[#14a800] text-white rounded-xl">Upwork</a>
+                <a href="https://mostaql.com/u/Zain_majed48" target="_blank" class="nb-btn flex items-center gap-2.5 px-7 py-3 bg-[#2386c8] text-white rounded-xl">مستقل</a>
+                <a href="https://www.linkedin.com/in/zain-eldeen-majed" target="_blank" class="nb-btn flex items-center gap-2.5 px-7 py-3 bg-[#0a66c2] text-white rounded-xl">LinkedIn</a>
+            </div>
+            <div class="pt-10 reveal" style="border-top:2px solid rgba(26,26,46,0.2)">
+                <p class="text-xs font-black text-nb-ink/50 uppercase tracking-widest mb-6">Also on</p>
+                <div class="flex justify-center gap-5">
+                    <a href="https://youtube.com/@Zain-majed" target="_blank" class="social-btn group" title="YouTube" aria-label="قناتي على يوتيوب">
+                        <div class="BG bg-nb-cream dark:bg-nb-ink2"></div>
+                        <div class="svgContainer text-nb-ink dark:text-nb-cream group-hover:text-[#FF0000] transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        </div>
+                    </a>
+                    <a href="https://instagram.com/zain.eldeen.majed" target="_blank" class="social-btn group" title="Instagram" aria-label="حسابي على إنستجرام">
+                        <div class="BG bg-nb-cream dark:bg-nb-ink2"></div>
+                        <div class="svgContainer text-nb-ink dark:text-nb-cream group-hover:text-[#E1306C] transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.7-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </div>
+                    </a>
+                    <a href="https://tiktok.com/@zaineldeen_majed" target="_blank" class="social-btn group" title="TikTok" aria-label="حسابي على تيك توك">
+                        <div class="BG bg-nb-cream dark:bg-nb-ink2"></div>
+                        <div class="svgContainer text-nb-ink dark:text-nb-cream group-hover:text-nb-ink dark:group-hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                        </div>
+                    </a>
+                    <a href="https://facebook.com/zain.majed.79" target="_blank" class="social-btn group" title="Facebook" aria-label="حسابي على فيسبوك">
+                        <div class="BG bg-nb-cream dark:bg-nb-ink2"></div>
+                        <div class="svgContainer text-nb-ink dark:text-nb-cream group-hover:text-[#1877F2] transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        /* ── Theme ── */
+        const applyTheme = (isDark) => {
+            isDark ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+        };
+        applyTheme(localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches));
+
+        const syncThemeIcons = () => {
+            const dark = document.documentElement.classList.contains('dark');
+            document.getElementById('theme-toggle-dark-icon')?.classList.toggle('hidden', dark);
+            document.getElementById('theme-toggle-light-icon')?.classList.toggle('hidden', !dark);
+            document.querySelector('.theme-dark-icon')?.classList.toggle('hidden', dark);
+            document.querySelector('.theme-light-icon')?.classList.toggle('hidden', !dark);
+        };
+        syncThemeIcons();
+
+        document.getElementById('theme-toggle')?.addEventListener('click', () => { applyTheme(!document.documentElement.classList.contains('dark')); syncThemeIcons(); });
+        document.getElementById('mobile-theme-toggle')?.addEventListener('click', () => { applyTheme(!document.documentElement.classList.contains('dark')); syncThemeIcons(); });
+
+        document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            const hamburger = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+            menu.classList.toggle('open');
+            hamburger?.classList.toggle('hidden');
+            closeIcon?.classList.toggle('hidden');
+        });
+
+        /* ── Typewriter ── */
+        const roles = ['خبير تسويق تقني (Tech Media).', 'محرر فيديو إعلاني بيعي.', 'مهندس أنظمة وتحكم آلي.', 'مؤسس أنظمة تشغيل تجارية.'];
+        let roleIndex = 0, charIndex = 0, deleting = false;
+        const typeEl = document.getElementById('typewriter-text');
+        function type() {
+            const current = roles[roleIndex];
+            if (!deleting) {
+                typeEl.textContent = current.substring(0, charIndex + 1); charIndex++;
+                if (charIndex === current.length) { setTimeout(() => { deleting = true; type(); }, 2000); return; }
+            } else {
+                typeEl.textContent = current.substring(0, charIndex - 1); charIndex--;
+                if (charIndex === 0) { deleting = false; roleIndex = (roleIndex + 1) % roles.length; }
+            }
+            setTimeout(type, deleting ? 60 : 90);
+        }
+        setTimeout(type, 500);
+
+        /* ── Reveal ── */
+        const observer = new IntersectionObserver((e) => { e.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); observer.unobserve(en.target); }}); }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        /* ── About: stagger, underline, and one-time counters ── */
+        const aboutSection = document.getElementById('about');
+        function animateCount(counter) {
+            const target = Number(counter.dataset.count);
+            const from = Number(counter.dataset.start || 0);
+            const prefix = counter.dataset.prefix || '';
+            const start = performance.now();
+            const duration = target > 100 ? 1800 : 1150;
+            function frame(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                counter.textContent = prefix + Math.round(from + (target - from) * eased);
+                if (progress < 1) requestAnimationFrame(frame);
+            }
+            requestAnimationFrame(frame);
+        }
+        if (aboutSection) {
+            const aboutObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    aboutSection.classList.add('about-visible');
+                    aboutObserver.unobserve(aboutSection);
+                });
+            }, { threshold: 0.18 });
+            aboutObserver.observe(aboutSection);
+
+            if (window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)').matches) {
+                aboutSection.querySelectorAll('.nb-stat').forEach(card => {
+                    card.addEventListener('pointermove', event => {
+                        const rect = card.getBoundingClientRect();
+                        const x = (event.clientX - rect.left) / rect.width - .5;
+                        const y = (event.clientY - rect.top) / rect.height - .5;
+                        card.style.setProperty('--tilt-x', `${-y * 5}deg`);
+                        card.style.setProperty('--tilt-y', `${x * 5}deg`);
+                    });
+                    card.addEventListener('pointerleave', () => {
+                        card.style.setProperty('--tilt-x', '0deg');
+                        card.style.setProperty('--tilt-y', '0deg');
+                    });
+                });
+            }
+
+            const statusText = document.getElementById('about-status-text');
+            const statusMessages = ['منهجية تعمل على النتائج', 'هندسة × تسويق × تنفيذ', 'أنظمة قابلة للقياس'];
+            let statusIndex = 0;
+            if (statusText) setInterval(() => {
+                statusIndex = (statusIndex + 1) % statusMessages.length;
+                statusText.textContent = statusMessages[statusIndex];
+            }, 3200);
+
+            const statsGrid = aboutSection.querySelector('.about-stats-grid');
+            if (statsGrid) {
+                const statsObserver = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) return;
+                        statsGrid.querySelectorAll('.count-up').forEach(animateCount);
+                        statsObserver.unobserve(statsGrid);
+                    });
+                }, { threshold:0.45 });
+                statsObserver.observe(statsGrid);
+            }
+        }
+
+        /* ── Timeline (Vertical, scroll-driven) ── */
+        const timelineNodes = Array.from(document.querySelectorAll('.timeline-node'));
+        const timelineProgress = document.getElementById('timeline-progress');
+        const timelineTrack = document.getElementById('timeline-nodes');
+
+        const pulseTimers = new WeakMap();
+        function triggerNodePulse(node) {
+            const oldTimer = pulseTimers.get(node);
+            if (oldTimer) clearTimeout(oldTimer);
+            node.classList.remove('just-activated');
+            // Force a fresh animation if the same node becomes active again quickly.
+            void node.offsetWidth;
+            node.classList.add('just-activated');
+            pulseTimers.set(node, setTimeout(() => node.classList.remove('just-activated'), 900));
+        }
+
+        function setActiveTimelineNode(idx) {
+            timelineNodes.forEach((node, i) => {
+                const willBeActive = i <= idx;
+                const becameActive = willBeActive && !node.classList.contains('active');
+                node.classList.toggle('active', willBeActive);
+                if (becameActive) triggerNodePulse(node);
+            });
+        }
+
+        function updateTimelineProgress() {
+            if (!timelineProgress || !timelineTrack || timelineNodes.length === 0) return;
+
+            const trackRect = timelineTrack.getBoundingClientRect();
+            const viewportAnchor = window.innerHeight * 0.6; // خط مرجعي عند 60% من ارتفاع الشاشة
+
+            // نلاقي آخر نقطة وصل شريط التقدم إليها أو تخطاها
+            let activeIdx = -1;
+            let progressPx = 0;
+
+            timelineNodes.forEach((node, i) => {
+                const circle = node.querySelector('.node-circle');
+                if (!circle) return;
+                const circleRect = circle.getBoundingClientRect();
+                const circleCenterY = circleRect.top + circleRect.height / 2;
+
+                if (circleCenterY <= viewportAnchor) {
+                    activeIdx = i;
+                    progressPx = (circleCenterY - trackRect.top) + (circleRect.height / 2);
+                }
+            });
+
+            if (activeIdx >= 0) {
+                const clampedPx = Math.max(0, Math.min(progressPx, trackRect.height));
+                timelineProgress.style.height = `${clampedPx}px`;
+                setActiveTimelineNode(activeIdx);
+            } else {
+                timelineProgress.style.height = '0px';
+                setActiveTimelineNode(-1);
+            }
+        }
+
+        let timelineTicking = false;
+        function onTimelineScroll() {
+            if (timelineTicking) return;
+            timelineTicking = true;
+            requestAnimationFrame(() => {
+                updateTimelineProgress();
+                timelineTicking = false;
+            });
+        }
+
+        if (timelineNodes.length > 0) {
+            window.addEventListener('scroll', onTimelineScroll, { passive: true });
+            window.addEventListener('resize', onTimelineScroll);
+            // تحديث أولي بعد رسم الصفحة بالكامل
+            window.addEventListener('load', updateTimelineProgress);
+            setTimeout(updateTimelineProgress, 300);
+        }
+
+        /* ── Orbiting Shapes ── */
+        const fieldCards = document.querySelectorAll('.field-card-wrapper');
+        
+        fieldCards.forEach(card => {
+            card.style.transition = 'filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease';
+            card.style.zIndex = '1';
+        });
+
+        fieldCards.forEach(wrapper => {
+            const icons = wrapper.getAttribute('data-icons').split(',');
+            
+            icons.forEach((icon, index) => {
+                const startAngle = (index * (360 / icons.length)) + (Math.random() * 20 - 10);
+                const duration = 15; 
+                const distance = 240 + Math.random() * 40;
+                
+                const container = document.createElement('div');
+                container.className = 'orbit-container';
+
+                const animator = document.createElement('div');
+                animator.style.animation = `spinOrbit ${duration}s linear infinite`;
+
+                const angleDiv = document.createElement('div');
+                angleDiv.style.transform = `rotate(${startAngle}deg)`;
+
+                const shape = document.createElement('div');
+                shape.className = 'floating-shape';
+                shape.style.setProperty('--orbit-dist', `${distance}px`);
+
+                const counterAngle = document.createElement('div');
+                counterAngle.style.transform = `rotate(-${startAngle}deg)`;
+                counterAngle.style.cssText += 'width:100%; height:100%; display:flex; align-items:center; justify-content:center;';
+
+                const counterAnimator = document.createElement('div');
+                counterAnimator.style.animation = `spinReverse ${duration}s linear infinite`;
+                counterAnimator.style.cssText += 'width:100%; height:100%; display:flex; align-items:center; justify-content:center;';
+
+                const inner = document.createElement('span');
+                inner.className = 'shape-inner';
+                inner.innerText = icon;
+                inner.style.animationDelay = `-${Math.random() * 3}s`;
+
+                counterAnimator.appendChild(inner);
+                counterAngle.appendChild(counterAnimator);
+                shape.appendChild(counterAngle);
+                angleDiv.appendChild(shape);
+                animator.appendChild(angleDiv);
+                container.appendChild(animator);
+                wrapper.appendChild(container);
+            });
+
+            wrapper.addEventListener('mouseenter', () => {
+                wrapper.style.zIndex = '50';
+                
+                fieldCards.forEach(otherCard => {
+                    if (otherCard !== wrapper) {
+                        otherCard.style.filter = 'blur(4px) grayscale(30%)';
+                        otherCard.style.opacity = '0.6';
+                        otherCard.style.transform = 'scale(0.96)';
+                    }
+                });
+            });
+
+            wrapper.addEventListener('mouseleave', () => {
+                fieldCards.forEach(otherCard => {
+                    if (otherCard !== wrapper) {
+                        otherCard.style.filter = 'none';
+                        otherCard.style.opacity = '1';
+                        otherCard.style.transform = 'scale(1)';
+                    }
+                });
+                
+                setTimeout(() => { wrapper.style.zIndex = '1'; }, 400); 
+            });
+        });
+
+        /* ── Paper-plane cursor with a soft dashed trail (mouse devices only) ── */
+        const cursorMedia = window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)');
+        if (cursorMedia.matches) {
+            const plane = document.getElementById('paper-plane-cursor');
+            const trail = document.getElementById('paper-plane-trail');
+            const context = trail.getContext('2d');
+            const interactionTargets = document.querySelectorAll('a, button');
+            const points = [];
+            let cursorX = window.innerWidth / 2;
+            let cursorY = window.innerHeight / 2;
+            let lastX = cursorX;
+            let lastY = cursorY;
+            let angle = 0;
+            let planeScale = 1;
+            let frameId;
+
+            function resizeTrail() {
+                const ratio = Math.min(window.devicePixelRatio || 1, 2);
+                trail.width = window.innerWidth * ratio;
+                trail.height = window.innerHeight * ratio;
+                trail.style.width = `${window.innerWidth}px`;
+                trail.style.height = `${window.innerHeight}px`;
+                context.setTransform(ratio, 0, 0, ratio, 0, 0);
+            }
+
+            function drawTrail() {
+                context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+                if (points.length > 1) {
+                    context.setLineDash([5, 8]);
+                    context.lineWidth = 1.5;
+                    context.lineCap = 'round';
+                    context.lineDashOffset = -performance.now() / 38;
+                    for (let i = 1; i < points.length; i++) {
+                        context.beginPath();
+                        context.moveTo(points[i - 1].x, points[i - 1].y);
+                        context.lineTo(points[i].x, points[i].y);
+                        const trailColor = document.body.classList.contains('plane-over-action')
+                            ? '181, 234, 215'
+                            : document.documentElement.classList.contains('dark') ? '255, 229, 102' : '26, 26, 46';
+                        context.strokeStyle = `rgba(${trailColor}, ${0.04 + (i / points.length) * 0.22})`;
+                        context.stroke();
+                    }
+                }
+                plane.style.transform = `translate3d(${cursorX - 14}px, ${cursorY - 14}px, 0) rotate(${angle}deg) scale(${planeScale})`;
+                frameId = requestAnimationFrame(drawTrail);
+            }
+
+            document.addEventListener('pointermove', event => {
+                if (event.pointerType !== 'mouse') return;
+                cursorX = event.clientX;
+                cursorY = event.clientY;
+                const deltaX = cursorX - lastX;
+                const deltaY = cursorY - lastY;
+                if (Math.abs(deltaX) + Math.abs(deltaY) > 1) angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+                lastX = cursorX;
+                lastY = cursorY;
+                points.push({ x: cursorX, y: cursorY });
+                if (points.length > 15) points.shift();
+            }, { passive:true });
+
+            interactionTargets.forEach(target => {
+                target.addEventListener('pointerenter', () => {
+                    document.body.classList.add('plane-over-action');
+                    plane.classList.add('is-over-action');
+                    planeScale = 1.38;
+                    if (target.matches('button, .nb-btn, .nb-btn-ghost')) target.classList.add('plane-target');
+                });
+                target.addEventListener('pointerleave', () => {
+                    document.body.classList.remove('plane-over-action');
+                    plane.classList.remove('is-over-action');
+                    planeScale = 1;
+                    target.classList.remove('plane-target');
+                });
+            });
+
+            window.addEventListener('resize', resizeTrail, { passive:true });
+            resizeTrail();
+            document.body.classList.add('paper-plane-cursor-ready');
+            frameId = requestAnimationFrame(drawTrail);
+            window.addEventListener('pagehide', () => cancelAnimationFrame(frameId), { once:true });
+        }
+    </script>
+    <!-- ── الفوتر (Footer) ── -->
+    <footer class="bg-nb-cream dark:bg-nb-ink border-t-4 border-nb-ink dark:border-nb-yellow py-8 mt-16 transition-colors duration-300 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 text-center flex flex-col items-center gap-4">
+            <a href="index.html" class="font-black text-2xl tracking-tight text-nb-ink dark:text-nb-yellow">
+                <span style="text-decoration: underline; text-decoration-color: #FFE566; text-underline-offset: 6px; text-decoration-thickness: 4px;">زين.</span>
+            </a>
+            <p class="text-sm font-bold text-nb-ink/60 dark:text-nb-cream/60">
+                © 2026 زين الدين ماجد. جميع الحقوق محفوظة.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ── زر التواصل العائم الثابت (Floating Action Button) ── -->
+    <a href="index.html#contact" class="fixed bottom-6 left-6 md:bottom-8 md:left-8 z-[90] nb-btn bg-nb-yellow text-nb-ink flex items-center gap-2 px-6 py-3.5 rounded-full text-sm sm:text-base transition-transform hover:-translate-y-1">
+        <span class="font-black">تواصل معي</span>
+        <svg class="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+    </a>
+</body>
+</html>
